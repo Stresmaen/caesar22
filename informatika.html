@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar | Halaman Informatika</title>
+
+    <!-- Meta SEO -->
+    <meta name="description"
+        content="Halaman Informatika Caesar — Kumpulan tugas pemrograman, artikel wawasan teknologi modern, dan topologi jaringan komputer.">
+    <meta name="author" content="Caesar">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Font - Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#080C14',
+                        darkcard: '#111726',
+                        neonblue: '#00F0FF',
+                        neonred: '#FF0055',
+                        accgray: '#1E293B',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow-blue': 'glowBlue 3s infinite alternate',
+                        'glow-red': 'glowRed 3s infinite alternate',
+                    },
+                    keyframes: {
+                        glowBlue: {
+                            '0%': { boxShadow: '0 0 5px rgba(0, 240, 255, 0.2), 0 0 10px rgba(0, 240, 255, 0.1)' },
+                            '100%': { boxShadow: '0 0 15px rgba(0, 240, 255, 0.6), 0 0 25px rgba(0, 240, 255, 0.3)' }
+                        },
+                        glowRed: {
+                            '0%': { boxShadow: '0 0 5px rgba(255, 0, 85, 0.2), 0 0 10px rgba(255, 0, 85, 0.1)' },
+                            '100%': { boxShadow: '0 0 15px rgba(255, 0, 85, 0.6), 0 0 25px rgba(255, 0, 85, 0.3)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Kustomisasi CSS Tambahan -->
+    <style type="text/css">
+        .glass-panel {
+            background: linear-gradient(135deg, rgba(8, 12, 20, 0.85) 0%, rgba(17, 23, 38, 0.7) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(5, 7, 12, 0.8) 0%, rgba(20, 27, 45, 0.5) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: linear-gradient(135deg, rgba(10, 15, 28, 0.9) 0%, rgba(26, 36, 62, 0.6) 100%);
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 15px 35px -12px rgba(0, 240, 255, 0.25), 0 0 12px rgba(0, 240, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .glass-card-red:hover {
+            border-color: rgba(255, 0, 85, 0.4) !important;
+            box-shadow: 0 15px 35px -12px rgba(255, 0, 85, 0.25), 0 0 12px rgba(255, 0, 85, 0.1) !important;
+        }
+
+        .text-glow-blue {
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+        }
+
+        .text-glow-red {
+            text-shadow: 0 0 12px rgba(255, 0, 85, 0.6);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #080C14;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F0FF;
+        }
+
+        /* Light Mode */
+        html:not(.dark) body {
+            background-color: #F8FAFC;
+            color: #0F172A;
+        }
+
+        html:not(.dark) .glass-panel {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(241, 245, 249, 0.88) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        html:not(.dark) .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+        }
+
+        html:not(.dark) .glass-card:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-color: rgba(2, 132, 199, 0.4);
+            box-shadow: 0 15px 30px -10px rgba(2, 132, 199, 0.15), 0 0 10px rgba(2, 132, 199, 0.08);
+        }
+
+        html:not(.dark) .text-white,
+        html:not(.dark) .text-slate-100,
+        html:not(.dark) .text-slate-200 {
+            color: #0F172A !important;
+        }
+
+        html:not(.dark) .text-slate-300 {
+            color: #1E293B !important;
+        }
+
+        html:not(.dark) .text-slate-400 {
+            color: #475569 !important;
+        }
+
+        html:not(.dark) .text-slate-500 {
+            color: #64748B !important;
+        }
+
+        html:not(.dark) .text-neonblue {
+            color: #0284C7 !important;
+            text-shadow: none !important;
+        }
+
+        html:not(.dark) .text-neonred {
+            color: #E11D48 !important;
+            text-shadow: none !important;
+        }
+
+        html:not(.dark) .bg-darkbg {
+            background-color: #F8FAFC !important;
+        }
+
+        html:not(.dark) .bg-darkcard {
+            background-color: #FFFFFF !important;
+        }
+
+        html:not(.dark) .bg-slate-950\/20,
+        html:not(.dark) .bg-slate-950\/40,
+        html:not(.dark) .bg-slate-950\/60 {
+            background-color: #F1F5F9 !important;
+            border-color: #E2E8F0 !important;
+        }
+
+        html:not(.dark) .bg-blue-950\/30,
+        html:not(.dark) .bg-blue-950\/40 {
+            background-color: #F0F9FF !important;
+            border-color: #7DD3FC !important;
+        }
+
+        html:not(.dark) ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+
+        html:not(.dark) ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+        }
+
+        html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+            background: #0284C7;
+        }
+
+        body,
+        .glass-panel,
+        .glass-card,
+        div,
+        span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p,
+        button,
+        a {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* ==================== KAMEN RIDER KABUTO THEME ==================== */
+        .clock-up-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.25), rgba(185, 28, 28, 0.1));
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #f87171;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .clock-up-badge::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #ef4444;
+            box-shadow: 0 0 8px #ef4444;
+            animation: clockUpPulse 1.2s infinite alternate;
+        }
+
+        @keyframes clockUpPulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 1;
+                box-shadow: 0 0 12px #ef4444;
+            }
+        }
+
+        /* Artikel teks content */
+        .artikel-content h4 {
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .artikel-content p {
+            margin-bottom: 0.75rem;
+            color: #cbd5e1;
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+
+        .artikel-content ul {
+            list-style-disc: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+        }
+
+        .artikel-content li {
+            line-height: 1.5;
+        }
+
+        .artikel-content strong {
+            color: #e2e8f0;
+        }
+
+        /* Topology diagram */
+        .topo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .topo-node {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00F0FF;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .topo-node:hover {
+            background: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+        }
+
+        .topo-label {
+            font-size: 9px;
+            color: #64748b;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .topo-line {
+            background: rgba(0, 240, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-darkbg text-slate-100 font-sans min-h-screen overflow-x-hidden relative flex flex-col">
+
+    <!-- Latar Belakang Gradient Dinamis -->
+    <div class="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
+        <div
+            class="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-[150px] animate-pulse-slow">
+        </div>
+        <div
+            class="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-cyan-600/10 blur-[150px] animate-pulse-slow">
+        </div>
+        <div
+            class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:40px_40px]">
+        </div>
+    </div>
+
+    <!-- TOP NAVBAR -->
+    <header class="w-full glass-panel fixed top-0 left-0 z-40 border-b border-white/5 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo / Brand -->
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-9 h-9 rounded-xl bg-gradient-to-tr from-neonred via-red-600 to-amber-400 p-[1.5px] shadow-[0_0_15px_rgba(239,68,68,0.3)]">
+                    <div class="w-full h-full bg-darkbg rounded-xl flex items-center justify-center">
+                        <span
+                            class="font-extrabold text-xs text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-400">C</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="font-bold text-base tracking-wider text-slate-100 leading-none">CAESAR</h1>
+                        <span class="clock-up-badge" title="Kamen Rider Kabuto System Active">
+                            <i class="fa-solid fa-stopwatch text-[8px]"></i> CLOCK UP
+                        </span>
+                    </div>
+                    <span
+                        class="text-[9px] text-slate-400 uppercase tracking-widest leading-none mt-1 inline-block flex items-center gap-1">
+                        <i class="fa-solid fa-crown text-amber-500 text-[8px]"></i> Ten no Michi • Informatika
+                    </span>
+                </div>
+            </div>
+
+            <!-- Navigasi Back & Theme -->
+            <div class="flex items-center gap-3">
+                <a href="tugas 1.html"
+                    class="flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card border border-neonblue/30 text-neonblue text-xs font-semibold hover:bg-neonblue/10 transition duration-300">
+                    <i class="fa-solid fa-arrow-left text-xs"></i> Kembali ke Dashboard
+                </a>
+                <!-- Theme Toggle -->
+                <button id="theme-toggle-btn" onclick="toggleTheme()" title="Ubah Mode Terang / Gelap"
+                    class="w-9 h-9 rounded-xl glass-card flex items-center justify-center text-amber-400 hover:scale-110 transition duration-300 border border-white/10 focus:outline-none">
+                    <i id="theme-toggle-icon" class="fa-solid fa-sun text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT WRAPPER -->
+    <main class="flex-grow max-w-7xl mx-auto w-full p-6 md:p-10 pt-28 flex flex-col gap-8">
+
+        <!-- Header Informatika -->
+        <div>
+            <div class="flex items-center gap-3">
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+                    <i class="fa-solid fa-laptop-code text-neonblue"></i> Halaman &amp; Tugas Informatika
+                </h2>
+                <span class="clock-up-badge text-[10px]">
+                    <i class="fa-solid fa-gauge-high"></i> Clock Up Speed
+                </span>
+            </div>
+            <p class="text-slate-400 text-xs md:text-sm mt-1">Daftar tugas pemrograman, artikel wawasan teknologi
+                modern, dan optimasi algoritma berkecepatan tinggi.</p>
+        </div>
+
+        <!-- ==================== ARTIKEL TOPOLOGI JARINGAN ==================== -->
+        <div class="glass-card p-6 md:p-8 rounded-2xl relative overflow-hidden border-l-4 border-l-neonblue shadow-xl">
+            <div
+                class="absolute -right-16 -bottom-16 w-60 h-60 rounded-full bg-neonblue/10 blur-3xl pointer-events-none">
+            </div>
+            <div class="flex flex-wrap items-center gap-2.5 mb-4">
+                <span
+                    class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-neonblue/15 text-neonblue border border-neonblue/30 flex items-center gap-1.5 font-sans">
+                    <i class="fa-solid fa-network-wired text-xs"></i> Artikel Informatika — Topologi Jaringan
+                </span>
+                <span class="text-[11px] text-slate-400 font-mono"><i class="fa-regular fa-clock"></i> 8 Min Read</span>
+                <span class="text-[11px] text-amber-400 font-semibold flex items-center gap-1"><i
+                        class="fa-solid fa-fire text-xs"></i> Materi Penting</span>
+            </div>
+
+            <h3 class="text-xl md:text-2xl font-extrabold text-white tracking-tight leading-snug mb-2">
+                Mengenal Topologi Jaringan Komputer: Jenis, Cara Kerja, dan Perbandingan
+            </h3>
+            <p class="text-xs md:text-sm text-slate-400 mb-6">
+                Oleh: Caesar &nbsp;|&nbsp; <i class="fa-solid fa-calendar-days"></i> 30 Juli 2026
+            </p>
+
+            <div class="artikel-content flex flex-col gap-6 relative z-10">
+
+                <!-- Pengantar -->
+                <div class="p-5 rounded-xl bg-blue-950/30 border border-neonblue/20">
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        <strong class="text-neonblue">Topologi jaringan</strong> adalah cara atau pola pengaturan fisik
+                        maupun logis
+                        bagaimana perangkat-perangkat komputer (node) dalam sebuah jaringan saling terhubung satu sama
+                        lain.
+                        Pemilihan topologi yang tepat sangat memengaruhi performa, kemudahan pemeliharaan, dan biaya
+                        pembangunan
+                        infrastruktur jaringan. Terdapat beberapa jenis topologi utama yang wajib dipahami, yaitu:
+                        <strong class="text-slate-200">Bus, Ring, Star, Mesh, Tree, dan Hybrid</strong>.
+                    </p>
+                </div>
+
+                <!-- Grid Topologi -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+
+                    <!-- 1. Topologi Bus -->
+                    <div class="glass-card p-5 rounded-2xl flex flex-col gap-3">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-9 h-9 rounded-lg bg-neonblue/15 border border-neonblue/30 flex items-center justify-center text-neonblue">
+                                <i class="fa-solid fa-minus-square"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white leading-none">Topologi Bus</h4>
+                                <span class="text-[10px] text-slate-400">Backbone Linear</span>
+                            </div>
+                        </div>
+                        <!-- Diagram Bus -->
+                        <div class="flex items-center justify-center gap-1 py-2">
+                            <div class="topo-box">
+                                <div class="topo-node"><i class="fa-solid fa-desktop text-xs"></i></div><span
+                                    class="topo-label">PC 1</span>
+                            </div>
+                            <div class="flex-1 h-[2px] topo-line"></div>
+                            <div class="topo-box">
+                                <div class="topo-node"><i class="fa-solid fa-desktop text-xs"></i></div><span
+                                    class="topo-label">PC 2</span>
+                            </div>
+                            <div class="flex-1 h-[2px] topo-line"></div>
+                            <div class="topo-box">
+                                <div class="topo-node"><i class="fa-solid fa-desktop text-xs"></i></div><span
+                                    class="topo-label">PC 3</span>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Semua perangkat terhubung ke satu kabel
+                            utama (backbone). Data dikirim ke seluruh jaringan dan hanya diterima oleh tujuan yang
+                            dituju.</p>
+                        <div class="flex flex-col gap-1 text-[10px]">
+                            <span class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Instalasi mudah &amp;
+                                murah</span>
+                            <span class="text-rose-400"><i class="fa-solid fa-xmark mr-1"></i> Jika kabel utama putus,
+                                seluruh jaringan mati</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. Topologi Ring -->
+                    <div class="glass-card p-5 rounded-2xl flex flex-col gap-3">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-9 h-9 rounded-lg bg-purple-500/15 border border-purple-400/30 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-rotate"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white leading-none">Topologi Ring</h4>
+                                <span class="text-[10px] text-slate-400">Cincin Token-Passing</span>
+                            </div>
+                        </div>
+                        <!-- Diagram Ring -->
+                        <div class="flex items-center justify-center gap-2 py-2">
+                            <div class="relative w-28 h-20 flex items-center justify-center">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2">
+                                    <div
+                                        class="w-7 h-7 rounded-lg bg-purple-500/15 border border-purple-400/30 flex items-center justify-center text-purple-400 text-[10px]">
+                                        <i class="fa-solid fa-desktop"></i></div>
+                                </div>
+                                <div class="absolute bottom-0 left-2">
+                                    <div
+                                        class="w-7 h-7 rounded-lg bg-purple-500/15 border border-purple-400/30 flex items-center justify-center text-purple-400 text-[10px]">
+                                        <i class="fa-solid fa-desktop"></i></div>
+                                </div>
+                                <div class="absolute bottom-0 right-2">
+                                    <div
+                                        class="w-7 h-7 rounded-lg bg-purple-500/15 border border-purple-400/30 flex items-center justify-center text-purple-400 text-[10px]">
+                                        <i class="fa-solid fa-desktop"></i></div>
+                                </div>
+                                <div class="text-[8px] text-slate-500">↻ Token</div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Perangkat terhubung membentuk lingkaran.
+                            Data bergerak satu arah menggunakan mekanisme token-passing hingga mencapai tujuan.</p>
+                        <div class="flex flex-col gap-1 text-[10px]">
+                            <span class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Tidak ada tabrakan
+                                data (collision)</span>
+                            <span class="text-rose-400"><i class="fa-solid fa-xmark mr-1"></i> 1 node mati = seluruh
+                                jaringan terganggu</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. Topologi Star -->
+                    <div class="glass-card p-5 rounded-2xl flex flex-col gap-3">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-9 h-9 rounded-lg bg-amber-500/15 border border-amber-400/30 flex items-center justify-center text-amber-400">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white leading-none">Topologi Star</h4>
+                                <span class="text-[10px] text-slate-400">Hub/Switch Terpusat</span>
+                            </div>
+                        </div>
+                        <!-- Diagram Star -->
+                        <div class="flex items-center justify-center py-2">
+                            <div class="relative w-28 h-24">
+                                <!-- Center -->
+                                <div
+                                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400 text-xs z-10 shadow-[0_0_10px_rgba(245,158,11,0.3)]">
+                                    <i class="fa-solid fa-circle-nodes"></i>
+                                </div>
+                                <!-- Nodes -->
+                                <div
+                                    class="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-6 rounded bg-amber-500/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-[9px]">
+                                    <i class="fa-solid fa-desktop"></i></div>
+                                <div
+                                    class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-6 rounded bg-amber-500/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-[9px]">
+                                    <i class="fa-solid fa-desktop"></i></div>
+                                <div
+                                    class="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded bg-amber-500/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-[9px]">
+                                    <i class="fa-solid fa-desktop"></i></div>
+                                <div
+                                    class="absolute right-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded bg-amber-500/10 border border-amber-400/20 flex items-center justify-center text-amber-400 text-[9px]">
+                                    <i class="fa-solid fa-desktop"></i></div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Semua perangkat terhubung ke satu
+                            perangkat pusat (hub/switch). Topologi paling umum digunakan di jaringan LAN modern.</p>
+                        <div class="flex flex-col gap-1 text-[10px]">
+                            <span class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Mudah dikembangkan
+                                &amp; di-troubleshoot</span>
+                            <span class="text-rose-400"><i class="fa-solid fa-xmark mr-1"></i> Jika hub/switch mati,
+                                semua node terputus</span>
+                        </div>
+                    </div>
+
+                    <!-- 4. Topologi Mesh -->
+                    <div class="glass-card p-5 rounded-2xl flex flex-col gap-3">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-9 h-9 rounded-lg bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-emerald-400">
+                                <i class="fa-solid fa-diagram-project"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white leading-none">Topologi Mesh</h4>
+                                <span class="text-[10px] text-slate-400">Full/Partial Connected</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center py-2">
+                            <div class="text-emerald-400/30 text-4xl"><i class="fa-solid fa-diagram-project"></i></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Setiap perangkat terhubung langsung ke
+                            semua perangkat lain (full mesh), atau ke sebagian perangkat (partial mesh). Digunakan pada
+                            sistem kritis seperti militer &amp; perbankan.</p>
+                        <div class="flex flex-col gap-1 text-[10px]">
+                            <span class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Sangat andal, jalur
+                                alternatif selalu ada</span>
+                            <span class="text-rose-400"><i class="fa-solid fa-xmark mr-1"></i> Biaya instalasi sangat
+                                tinggi</span>
+                        </div>
+                    </div>
+
+                    <!-- 5. Topologi Tree -->
+                    <div class="glass-card p-5 rounded-2xl flex flex-col gap-3">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-9 h-9 rounded-lg bg-cyan-500/15 border border-cyan-400/30 flex items-center justify-center text-cyan-400">
+                                <i class="fa-solid fa-sitemap"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white leading-none">Topologi Tree</h4>
+                                <span class="text-[10px] text-slate-400">Hierarki Pohon</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center py-2">
+                            <div class="text-cyan-400/30 text-4xl"><i class="fa-solid fa-sitemap"></i></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Gabungan topologi Bus dan Star membentuk
+                            struktur hierarki seperti pohon. Root node di paling atas, lalu bercabang ke bawah. Umum
+                            digunakan di jaringan kampus (MAN).</p>
+                        <div class="flex flex-col gap-1 text-[10px]">
+                            <span class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Mudah memperluas
+                                segmen jaringan baru</span>
+                            <span class="text-rose-400"><i class="fa-solid fa-xmark mr-1"></i> Jika kabel utama rusak,
+                                segmen bawah terputus</span>
+                        </div>
+                    </div>
+
+                    <!-- 6. Topologi Hybrid -->
+                    <div class="glass-card p-5 rounded-2xl flex flex-col gap-3">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-9 h-9 rounded-lg bg-rose-500/15 border border-rose-400/30 flex items-center justify-center text-rose-400">
+                                <i class="fa-solid fa-shuffle"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white leading-none">Topologi Hybrid</h4>
+                                <span class="text-[10px] text-slate-400">Kombinasi Campuran</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center py-2">
+                            <div class="text-rose-400/30 text-4xl"><i class="fa-solid fa-shuffle"></i></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">Merupakan kombinasi dari dua atau lebih
+                            jenis topologi. Contoh: Star-Mesh, Star-Bus. Digunakan oleh perusahaan besar yang
+                            membutuhkan fleksibilitas tinggi.</p>
+                        <div class="flex flex-col gap-1 text-[10px]">
+                            <span class="text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Sangat fleksibel
+                                sesuai kebutuhan</span>
+                            <span class="text-rose-400"><i class="fa-solid fa-xmark mr-1"></i> Kompleks dalam
+                                pengelolaan dan biaya</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Tabel Perbandingan -->
+                <div class="glass-card p-5 rounded-2xl">
+                    <h4 class="text-white font-bold text-sm mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-table text-neonblue"></i> Tabel Perbandingan Topologi Jaringan
+                    </h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-[11px] text-slate-300 border-collapse">
+                            <thead>
+                                <tr class="border-b border-white/10">
+                                    <th class="text-left p-2.5 text-neonblue font-bold">Topologi</th>
+                                    <th class="text-left p-2.5 text-neonblue font-bold">Kecepatan</th>
+                                    <th class="text-left p-2.5 text-neonblue font-bold">Keandalan</th>
+                                    <th class="text-left p-2.5 text-neonblue font-bold">Biaya</th>
+                                    <th class="text-left p-2.5 text-neonblue font-bold">Penggunaan Umum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                                    <td class="p-2.5 font-semibold text-slate-200">Bus</td>
+                                    <td class="p-2.5 text-amber-400">Sedang</td>
+                                    <td class="p-2.5 text-rose-400">Rendah</td>
+                                    <td class="p-2.5 text-emerald-400">Sangat Murah</td>
+                                    <td class="p-2.5">Jaringan kecil sederhana</td>
+                                </tr>
+                                <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                                    <td class="p-2.5 font-semibold text-slate-200">Ring</td>
+                                    <td class="p-2.5 text-amber-400">Sedang</td>
+                                    <td class="p-2.5 text-amber-400">Sedang</td>
+                                    <td class="p-2.5 text-amber-400">Sedang</td>
+                                    <td class="p-2.5">Token Ring Networks</td>
+                                </tr>
+                                <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                                    <td class="p-2.5 font-semibold text-slate-200">Star</td>
+                                    <td class="p-2.5 text-emerald-400">Tinggi</td>
+                                    <td class="p-2.5 text-emerald-400">Tinggi</td>
+                                    <td class="p-2.5 text-amber-400">Sedang</td>
+                                    <td class="p-2.5">LAN Kantor / Sekolah</td>
+                                </tr>
+                                <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                                    <td class="p-2.5 font-semibold text-slate-200">Mesh</td>
+                                    <td class="p-2.5 text-emerald-400">Sangat Tinggi</td>
+                                    <td class="p-2.5 text-emerald-400">Sangat Tinggi</td>
+                                    <td class="p-2.5 text-rose-400">Sangat Mahal</td>
+                                    <td class="p-2.5">Jaringan militer / perbankan</td>
+                                </tr>
+                                <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                                    <td class="p-2.5 font-semibold text-slate-200">Tree</td>
+                                    <td class="p-2.5 text-amber-400">Sedang-Tinggi</td>
+                                    <td class="p-2.5 text-amber-400">Sedang</td>
+                                    <td class="p-2.5 text-amber-400">Sedang</td>
+                                    <td class="p-2.5">MAN Kampus / Gedung</td>
+                                </tr>
+                                <tr class="hover:bg-white/5 transition">
+                                    <td class="p-2.5 font-semibold text-slate-200">Hybrid</td>
+                                    <td class="p-2.5 text-emerald-400">Fleksibel</td>
+                                    <td class="p-2.5 text-emerald-400">Tinggi</td>
+                                    <td class="p-2.5 text-rose-400">Mahal</td>
+                                    <td class="p-2.5">Perusahaan besar / ISP</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Kesimpulan -->
+                <div class="p-5 rounded-xl bg-blue-950/30 border border-neonblue/20">
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        <strong class="text-neonblue">Kesimpulan:</strong> Tidak ada topologi yang "sempurna" secara
+                        universal. Pemilihan topologi jaringan
+                        harus disesuaikan dengan kebutuhan skalabilitas, anggaran, dan tingkat keandalan yang
+                        diinginkan. Dalam dunia nyata,
+                        topologi <strong class="text-slate-200">Star</strong> adalah yang paling banyak digunakan karena
+                        keseimbangan antara performa,
+                        kemudahan manajemen, dan biaya yang terjangkau.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artikel Unggulan Lainnya - AI -->
+        <div class="glass-card p-6 md:p-8 rounded-2xl relative overflow-hidden border-l-4 border-l-cyan-500 shadow-xl">
+            <div
+                class="absolute -right-16 -bottom-16 w-60 h-60 rounded-full bg-cyan-600/10 blur-3xl pointer-events-none">
+            </div>
+            <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-6 relative z-10">
+                <div class="max-w-3xl">
+                    <div class="flex flex-wrap items-center gap-2.5 mb-3">
+                        <span
+                            class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-neonblue/15 text-neonblue border border-neonblue/30 flex items-center gap-1.5 font-sans">
+                            <i class="fa-solid fa-newspaper text-xs"></i> Artikel Wawasan Informatika
+                        </span>
+                        <span class="text-[11px] text-slate-400 font-mono"><i class="fa-regular fa-clock"></i> 5 Min
+                            Read</span>
+                        <span class="text-[11px] text-amber-400 font-semibold flex items-center gap-1"><i
+                                class="fa-solid fa-fire text-xs"></i> Trending Topic</span>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-extrabold text-white tracking-tight leading-snug">
+                        Revolusi Artificial Intelligence &amp; Masa Depan Informatika: Menavigasi Era Generative AI dan
+                        Computational Thinking
+                    </h3>
+                    <p class="text-xs md:text-sm text-slate-300 mt-2.5 leading-relaxed">
+                        Eksplorasi mendalam mengenai pergeseran paradigma kecerdasan buatan, dampaknya terhadap
+                        pengembangan perangkat lunak modern, pentingnya berpikir komputasional (*computational
+                        thinking*), serta tantangan etika teknologi bagi generasi muda.
+                    </p>
+                </div>
+                <div class="shrink-0 flex items-center">
+                    <button onclick="toggleArtikelAI()"
+                        class="w-full lg:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-neonblue to-blue-600 hover:from-blue-400 hover:to-neonblue text-slate-950 font-bold text-xs shadow-[0_0_20px_rgba(0,240,255,0.3)] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-book-open text-sm"></i> Baca Artikel <i
+                            class="fa-solid fa-arrow-down text-xs ml-1" id="artikel-ai-icon"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Expandable Content -->
+            <div id="artikel-ai-content" class="hidden mt-6 pt-6 border-t border-white/10 relative z-10">
+                <div
+                    class="artikel-content prose prose-invert max-w-none text-slate-300 leading-relaxed font-sans text-xs md:text-sm flex flex-col gap-4">
+                    <div>
+                        <h4 class="text-white font-bold text-sm mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-brain text-neonblue"></i> 1. Transformasi Generative AI dalam
+                            Pengembangan Perangkat Lunak
+                        </h4>
+                        <p>Informatika bukan lagi sekadar cabang ilmu sains yang mempelajari cara menulis sintaksis
+                            perintah komputer. Di era disrupsi Generative AI saat ini, Informatika telah bertransformasi
+                            menjadi disiplin ilmu pemecahan masalah berbasis pemikiran komputasional. Kehadiran AI
+                            mempercepat penulisan kode dasar (boilerplate code), pengujian bug otomatis, hingga optimasi
+                            struktur basis data.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-sm mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-microchip text-neonblue"></i> 2. Pentingnya Berpikir Komputasional
+                        </h4>
+                        <p>Meskipun alat bantu berteknologi AI dapat memproses jutaan baris kode dalam hitungan detik,
+                            nalar pemikiran manusia tetap menjadi fondasi utama. <strong>4 Pilar Berpikir
+                                Komputasional</strong> yang wajib dikuasai:</p>
+                        <ul class="list-disc pl-5 flex flex-col gap-1.5 mb-4 text-xs text-slate-400">
+                            <li><strong class="text-slate-200">Dekomposisi:</strong> Memecah masalah kompleks menjadi
+                                sub-bagian kecil yang dapat dikelola.</li>
+                            <li><strong class="text-slate-200">Pengenalan Pola (Pattern Recognition):</strong> Menemukan
+                                kemiripan pola data untuk efisiensi solusi.</li>
+                            <li><strong class="text-slate-200">Abstraksi:</strong> Memfokuskan perhatian pada informasi
+                                penting dan mengabaikan detail irelevan.</li>
+                            <li><strong class="text-slate-200">Perancangan Algoritma:</strong> Menyusun tahapan
+                                instruksi logis yang terstruktur secara matematis.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-sm mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-neonblue"></i> 3. Etika, Cyber Security, dan
+                            Keamanan Data
+                        </h4>
+                        <p>Perkembangan pesat ilmu Informatika juga membawa tantangan besar di bidang keamanan jaringan
+                            dan privasi data. Pemahaman mengenai privasi pengguna, pencegahan kejahatan siber, serta
+                            implementasi algoritma enkripsi modern menjadi materi krusial bagi generasi pengembang web
+                            dan aplikasi masa depan.</p>
+                    </div>
+                    <div
+                        class="p-4 rounded-xl bg-blue-950/40 border border-neonblue/30 italic font-sans text-slate-300 mt-2 leading-relaxed">
+                        <strong class="text-neonblue">Kesimpulan:</strong> Penguasaan Informatika bukan hanya tentang
+                        mengikuti tren alat teknologi yang berganti, melainkan tentang membangun pola pikir adaptif,
+                        analitis, dan etis dalam memanfaatkan teknologi bagi kesejahteraan masyarakat.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tugas Grid -->
+        <div>
+            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-folder-open text-neonblue"></i> Daftar Tugas Informatika
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <!-- Tugas 1 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between h-72">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span
+                                class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-neonblue/10 text-neonblue border border-neonblue/20 font-sans">Web
+                                Dev</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 1</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white">Dasar Pemrograman Web (HTML &amp; CSS)</h3>
+                        <p class="text-xs text-slate-400 mt-2 line-clamp-3 leading-relaxed">
+                            Tugas mendesain halaman web profil sederhana pertama menggunakan HTML5 semantik dan vanilla
+                            CSS. Berfokus pada penggunaan flexbox, pemahaman grid, dan media query untuk responsivitas.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 01 Agustus 2026</span>
+                        <button onclick="openInfoModal(1)"
+                            class="text-xs font-semibold text-neonblue hover:text-white flex items-center gap-1 transition">
+                            Detail <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Tugas 2 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between h-72">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span
+                                class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-neonred/10 text-neonred border border-neonred/20 font-sans">Python</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 2</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white">Algoritma Pencarian &amp; Pengurutan (Python)</h3>
+                        <p class="text-xs text-slate-400 mt-2 line-clamp-3 leading-relaxed">
+                            Membangun script Python untuk membandingkan efisiensi waktu eksekusi antara Binary Search
+                            dengan Linear Search pada array berukuran besar.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 15 Agustus 2026</span>
+                        <button onclick="openInfoModal(2)"
+                            class="text-xs font-semibold text-neonblue hover:text-white flex items-center gap-1 transition">
+                            Detail <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Tugas 3 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between h-72">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span
+                                class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-sans">Excel</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 3</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white">Analisis Data Dashboard dengan Microsoft Excel</h3>
+                        <p class="text-xs text-slate-400 mt-2 line-clamp-3 leading-relaxed">
+                            Membuat visualisasi dashboard interaktif menggunakan Pivot Table, VLOOKUP, HLOOKUP, dan
+                            grafik bar untuk menganalisis data penjualan produk simulasi.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 28 Agustus 2026</span>
+                        <button onclick="openInfoModal(3)"
+                            class="text-xs font-semibold text-neonblue hover:text-white flex items-center gap-1 transition">
+                            Detail <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Tugas 4 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between h-72 border border-white/5">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span
+                                class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20 font-sans">UI/UX
+                                Figma</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 4</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white">Desain Prototipe Mobile Aplikasi Sekolah</h3>
+                        <p class="text-xs text-slate-400 mt-2 line-clamp-3 leading-relaxed">
+                            Merancang user interface aplikasi mobile monitoring tugas dan kalender ujian sekolah dengan
+                            gaya Neomorphism dan Glassmorphism di Figma.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 05 September 2026</span>
+                        <button onclick="openInfoModal(4)"
+                            class="text-xs font-semibold text-neonblue hover:text-white flex items-center gap-1 transition">
+                            Detail <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Tugas 5 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between h-72 border border-white/5">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span
+                                class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-sans">CyberSec</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 5</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white">Dasar Keamanan Jaringan &amp; Enkripsi Data</h3>
+                        <p class="text-xs text-slate-400 mt-2 line-clamp-3 leading-relaxed">
+                            Analisis konsep dasar Cyber Security, penggunaan protokol HTTPS, pencegahan SQL Injection,
+                            serta simulasi enkripsi simetris (AES) &amp; asimetris (RSA).
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 18 September 2026</span>
+                        <button onclick="openInfoModal(5)"
+                            class="text-xs font-semibold text-neonblue hover:text-white flex items-center gap-1 transition">
+                            Detail <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Tugas 6 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between h-72 border border-white/5">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span
+                                class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-sans">Database</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 6</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white">Perancangan Basis Data SQL &amp; Relasi Data</h3>
+                        <p class="text-xs text-slate-400 mt-2 line-clamp-3 leading-relaxed">
+                            Membuat skema Entity Relationship Diagram (ERD) dan mengeksekusi sintaks DDL/DML SQL
+                            (CREATE, INSERT, JOIN) untuk sistem informasi sekolah.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 25 September 2026</span>
+                        <button onclick="openInfoModal(6)"
+                            class="text-xs font-semibold text-neonblue hover:text-white flex items-center gap-1 transition">
+                            Detail <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-auto pt-10 pb-4 text-center border-t border-white/5 text-[10px] text-slate-500">
+            <p>© 2026 Caesar. | SMA Cinta Kasih Tzu Chi • <span class="text-red-400 font-semibold"><i
+                        class="fa-solid fa-crown text-amber-400"></i> Ten no michi wo iki, subete wo tsasadoru otoko
+                    (Kamen Rider Kabuto ZECT System)</span></p>
+        </footer>
+    </main>
+
+    <!-- MODAL POPUP DETAIL INFORMATIKA -->
+    <div id="info-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-darkbg/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div
+            class="glass-panel w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex flex-col max-h-[85vh] transform scale-95 transition-transform duration-300">
+            <div class="px-6 py-4 border-b border-white/5 flex justify-between items-center bg-darkcard">
+                <span
+                    class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-neonblue/10 text-neonblue border border-neonblue/20 font-sans"
+                    id="info-modal-tag">Tag</span>
+                <button onclick="closeInfoModal()" class="text-slate-400 hover:text-neonred transition"><i
+                        class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div class="p-6 overflow-y-auto flex-grow flex flex-col gap-4 text-slate-300" id="info-modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // Theme
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        }
+
+        function setTheme(theme) {
+            const htmlEl = document.documentElement;
+            const icon = document.getElementById('theme-toggle-icon');
+            if (theme === 'light') {
+                htmlEl.classList.remove('dark');
+                htmlEl.classList.add('light');
+                localStorage.setItem('theme', 'light');
+                if (icon) icon.className = 'fa-solid fa-moon text-indigo-500 text-sm';
+            } else {
+                htmlEl.classList.add('dark');
+                htmlEl.classList.remove('light');
+                localStorage.setItem('theme', 'dark');
+                if (icon) icon.className = 'fa-solid fa-sun text-amber-400 text-sm';
+            }
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        }
+
+        initTheme();
+
+        // Toggle Artikel AI
+        function toggleArtikelAI() {
+            const content = document.getElementById('artikel-ai-content');
+            const icon = document.getElementById('artikel-ai-icon');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.className = 'fa-solid fa-arrow-up text-xs ml-1';
+            } else {
+                content.classList.add('hidden');
+                icon.className = 'fa-solid fa-arrow-down text-xs ml-1';
+            }
+        }
+
+        // Modal Data
+        const infoTasks = {
+            1: {
+                tag: 'Web Dev',
+                title: 'Dasar Pemrograman Web (HTML & CSS)',
+                date: '01 Agustus 2026',
+                desc: 'Membuat rancangan portofolio sederhana menggunakan kerangka HTML5 yang semantik dan visual CSS yang responsif.',
+                details: `
+                    <h4 class="text-white font-bold text-sm mb-2">Tujuan Tugas:</h4>
+                    <p class="text-xs leading-relaxed mb-4">Memahami struktur dasar tag HTML5 (nav, header, section, footer) serta cara menata tata letak (layouting) menggunakan Flexbox CSS agar responsif di layar handphone dan komputer.</p>
+                    <h4 class="text-white font-bold text-sm mb-2">Fitur Utama:</h4>
+                    <ul class="list-disc pl-5 text-xs flex flex-col gap-1.5 mb-4">
+                        <li>Navigasi bar responsif dengan dropdown menu.</li>
+                        <li>Layout kolom ganda untuk deskripsi diri dan kartu minat.</li>
+                        <li>Formulir kontak interaktif menggunakan CSS hover states.</li>
+                    </ul>
+                    <h4 class="text-white font-bold text-sm mb-2">Code Snippet (Contoh CSS Flexbox):</h4>
+                    <pre class="bg-darkbg p-3.5 rounded-lg border border-white/5 font-mono text-[10px] text-emerald-400 overflow-x-auto leading-relaxed">
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #0b0f19;
+}
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+    }
+}</pre>`
+            },
+            2: {
+                tag: 'Python',
+                title: 'Algoritma Pencarian & Pengurutan',
+                date: '15 Agustus 2026',
+                desc: 'Implementasi dan analisis kompleksitas algoritma pencarian linear (Linear Search) dan pencarian biner (Binary Search).',
+                details: `
+                    <h4 class="text-white font-bold text-sm mb-2">Tujuan Tugas:</h4>
+                    <p class="text-xs leading-relaxed mb-4">Menganalisis perbedaan performa kecepatan waktu eksekusi (Big O Notation) antara pencarian linear (O(N)) dengan pencarian biner (O(log N)) menggunakan data dummy terurut sebesar 10.000 elemen.</p>
+                    <h4 class="text-white font-bold text-sm mb-2">Kode Program (Binary Search Python):</h4>
+                    <pre class="bg-darkbg p-3.5 rounded-lg border border-white/5 font-mono text-[10px] text-emerald-400 overflow-x-auto leading-relaxed">
+def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1</pre>`
+            },
+            3: {
+                tag: 'Excel',
+                title: 'Analisis Data Dashboard dengan Microsoft Excel',
+                date: '28 Agustus 2026',
+                desc: 'Tugas merancang spreadsheet analisis keuangan penjualan bulanan serta menyajikannya dalam grafik interaktif.',
+                details: `
+                    <h4 class="text-white font-bold text-sm mb-2">Tujuan Tugas:</h4>
+                    <p class="text-xs leading-relaxed mb-4">Menguji keahlian formula matematika dan logika Excel dalam mengolah database penjualan mentah (raw data) menjadi informasi siap baca untuk keperluan presentasi bisnis.</p>
+                    <h4 class="text-white font-bold text-sm mb-2">Rumus Utama yang Digunakan:</h4>
+                    <ul class="list-disc pl-5 text-xs flex flex-col gap-2 mb-4">
+                        <li><code>=VLOOKUP(id_produk, produk_master, 2, FALSE)</code> untuk menarik harga produk otomatis.</li>
+                        <li><code>=SUMIFS(penjualan_total, wilayah, "Sumatera", kategori, "Elektronik")</code> untuk menyaring total omset.</li>
+                        <li><code>=IF(omset_karyawan >= target, "Bonus", "Tidak Bonus")</code> untuk perhitungan insentif bonus karyawan.</li>
+                    </ul>`
+            },
+            4: {
+                tag: 'UI/UX Figma',
+                title: 'Desain Prototipe Mobile Aplikasi Monitoring Sekolah',
+                date: '05 September 2026',
+                desc: 'Merancang wireframe, tata letak antarmuka, dan alur pengalaman pengguna (user flow) untuk aplikasi siswa di Figma.',
+                details: `
+                    <h4 class="text-white font-bold text-sm mb-2">Tujuan Tugas:</h4>
+                    <p class="text-xs leading-relaxed mb-4">Memahami metodologi Design Thinking dalam pembuatan antarmuka digital yang intuitif, memenuhi standar aksesibilitas warna WCAG, serta responsif pada berbagai resolusi gawai Android dan iOS.</p>
+                    <h4 class="text-white font-bold text-sm mb-2">Fitur Wireframe Utama:</h4>
+                    <ul class="list-disc pl-5 text-xs flex flex-col gap-1.5 mb-4">
+                        <li><strong>Dashboard Siswa:</strong> Kartu statistik nilai, sisa waktu pengumpulan tugas, dan notifikasi jadwal ujian.</li>
+                        <li><strong>Mode Gelap & Terang:</strong> Sistem desain dengan tokens warna konsisten berbasis Glassmorphism.</li>
+                        <li><strong>Modul Jadwal Pelajaran:</strong> Tampilan kalender mingguan interaktif dengan indikator warna per mata pelajaran.</li>
+                    </ul>`
+            },
+            5: {
+                tag: 'CyberSec',
+                title: 'Dasar Keamanan Jaringan & Enkripsi Data',
+                date: '18 September 2026',
+                desc: 'Analisis prinsip keamanan informasi (CIA Triad), protokol HTTPS/SSL, dan pengujian kelemahan web.',
+                details: `
+                    <h4 class="text-white font-bold text-sm mb-2">Prinsip CIA Triad:</h4>
+                    <ul class="list-disc pl-5 text-xs flex flex-col gap-1.5 mb-4">
+                        <li><strong>Confidentiality (Kerahasiaan):</strong> Memastikan data sensitif hanya dapat diakses oleh pihak yang berwenang menggunakan algoritma Enkripsi AES-256.</li>
+                        <li><strong>Integrity (Integritas):</strong> Menjamin data tidak mengalami manipulasi saat transit dengan fungsi hash SHA-256.</li>
+                        <li><strong>Availability (Ketersediaan):</strong> Memastikan server dapat diakses tanpa hambatan dengan mitigasi serangan DDoS.</li>
+                    </ul>
+                    <h4 class="text-white font-bold text-sm mb-2">Contoh Penanganan SQL Injection:</h4>
+                    <pre class="bg-darkbg p-3.5 rounded-lg border border-white/5 font-mono text-[10px] text-cyan-400 overflow-x-auto leading-relaxed">
+// Menggunakan Prepared Statement (PDO PHP) untuk keamanan
+$stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+$stmt->execute(['email' => $userInput]);
+$user = $stmt->fetch();</pre>`
+            },
+            6: {
+                tag: 'Database',
+                title: 'Perancangan Basis Data SQL & Relasi Data',
+                date: '25 September 2026',
+                desc: 'Merancang Entity Relationship Diagram (ERD) dan mengeksekusi kueri SQL relasional.',
+                details: `
+                    <h4 class="text-white font-bold text-sm mb-2">Perancangan Skema Database:</h4>
+                    <p class="text-xs leading-relaxed mb-4">Membuat tabel <code>siswa</code>, <code>guru</code>, <code>mata_pelajaran</code>, dan <code>jadwal</code> dengan mengimplementasikan Primary Key & Foreign Key secara tepat serta memenuhi kaidah Normalisasi Database (1NF s.d. 3NF).</p>
+                    <h4 class="text-white font-bold text-sm mb-2">Kueri SQL Relasional (JOIN Statement):</h4>
+                    <pre class="bg-darkbg p-3.5 rounded-lg border border-white/5 font-mono text-[10px] text-indigo-400 overflow-x-auto leading-relaxed">
+SELECT j.hari, j.jam_mulai, m.nama_mapel, g.nama_guru, j.ruang
+FROM jadwal j
+JOIN mata_pelajaran m ON j.id_mapel = m.id_mapel
+JOIN guru g ON j.id_guru = g.id_guru
+WHERE j.kelas = 'XI MIPA'
+ORDER BY j.jam_mulai ASC;</pre>`
+            }
+        };
+
+        function openInfoModal(taskId) {
+            const data = infoTasks[taskId];
+            if (!data) return;
+            document.getElementById('info-modal-tag').textContent = data.tag;
+            const body = document.getElementById('info-modal-body');
+            body.innerHTML = `
+                <div>
+                    <h3 class="text-xl font-bold text-white leading-tight">${data.title}</h3>
+                    <p class="text-[10px] text-slate-400 mt-1">Tanggal: ${data.date}</p>
+                </div>
+                <div class="h-[1px] w-full bg-white/5 my-2"></div>
+                <div><p class="text-xs text-slate-300 leading-relaxed">${data.desc}</p></div>
+                <div class="mt-2">${data.details}</div>
+            `;
+            const modal = document.getElementById('info-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('.glass-panel').classList.remove('scale-95');
+                modal.querySelector('.glass-panel').classList.add('scale-100');
+            }, 50);
+        }
+
+        function closeInfoModal() {
+            const modal = document.getElementById('info-modal');
+            modal.classList.add('opacity-0');
+            modal.querySelector('.glass-panel').classList.remove('scale-100');
+            modal.querySelector('.glass-panel').classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        document.getElementById('info-modal').addEventListener('click', function (e) {
+            if (e.target === this) closeInfoModal();
+        });
+    </script>
+</body>
+
+</html>

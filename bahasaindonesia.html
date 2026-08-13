@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar | Bahasa Indonesia</title>
+
+    <!-- Meta SEO -->
+    <meta name="description"
+        content="Halaman Bahasa Indonesia Caesar — Kumpulan naskah esai, apresiasi karya sastra, artikel biografi, anekdot, dan teks lho.">
+    <meta name="author" content="Caesar">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Font - Outfit & Lora (Serif untuk konten sastra) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#080C14',
+                        darkcard: '#111726',
+                        neonblue: '#00F0FF',
+                        neonred: '#FF0055',
+                        accgray: '#1E293B',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Lora', 'Georgia', 'serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow-blue': 'glowBlue 3s infinite alternate',
+                        'glow-red': 'glowRed 3s infinite alternate',
+                    },
+                    keyframes: {
+                        glowBlue: {
+                            '0%': { boxShadow: '0 0 5px rgba(0, 240, 255, 0.2), 0 0 10px rgba(0, 240, 255, 0.1)' },
+                            '100%': { boxShadow: '0 0 15px rgba(0, 240, 255, 0.6), 0 0 25px rgba(0, 240, 255, 0.3)' }
+                        },
+                        glowRed: {
+                            '0%': { boxShadow: '0 0 5px rgba(255, 0, 85, 0.2), 0 0 10px rgba(255, 0, 85, 0.1)' },
+                            '100%': { boxShadow: '0 0 15px rgba(255, 0, 85, 0.6), 0 0 25px rgba(255, 0, 85, 0.3)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Kustomisasi CSS Tambahan -->
+    <style type="text/css">
+        .glass-panel {
+            background: linear-gradient(135deg, rgba(8, 12, 20, 0.85) 0%, rgba(17, 23, 38, 0.7) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(5, 7, 12, 0.8) 0%, rgba(20, 27, 45, 0.5) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: linear-gradient(135deg, rgba(10, 15, 28, 0.9) 0%, rgba(26, 36, 62, 0.6) 100%);
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 15px 35px -12px rgba(0, 240, 255, 0.25), 0 0 12px rgba(0, 240, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .glass-card-red:hover {
+            border-color: rgba(255, 0, 85, 0.4) !important;
+            box-shadow: 0 15px 35px -12px rgba(255, 0, 85, 0.25), 0 0 12px rgba(255, 0, 85, 0.1) !important;
+        }
+
+        .text-glow-blue { text-shadow: 0 0 12px rgba(0, 240, 255, 0.6); }
+        .text-glow-red { text-shadow: 0 0 12px rgba(255, 0, 85, 0.6); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #080C14; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FF0055; }
+
+        /* Light Mode */
+        html:not(.dark) body { background-color: #F8FAFC; color: #0F172A; }
+        html:not(.dark) .glass-panel {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(241, 245, 249, 0.88) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+        }
+        html:not(.dark) .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+        }
+        html:not(.dark) .glass-card:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-color: rgba(225, 29, 72, 0.4);
+            box-shadow: 0 15px 30px -10px rgba(225, 29, 72, 0.15), 0 0 10px rgba(225, 29, 72, 0.08);
+        }
+        html:not(.dark) .text-white,
+        html:not(.dark) .text-slate-100,
+        html:not(.dark) .text-slate-200 { color: #0F172A !important; }
+        html:not(.dark) .text-slate-300 { color: #1E293B !important; }
+        html:not(.dark) .text-slate-400 { color: #475569 !important; }
+        html:not(.dark) .text-slate-500 { color: #64748B !important; }
+        html:not(.dark) .text-neonblue { color: #0284C7 !important; text-shadow: none !important; }
+        html:not(.dark) .text-neonred { color: #E11D48 !important; text-shadow: none !important; }
+        html:not(.dark) .bg-darkbg { background-color: #F8FAFC !important; }
+        html:not(.dark) .bg-darkcard { background-color: #FFFFFF !important; }
+        html:not(.dark) .bg-red-950\/30,
+        html:not(.dark) .bg-red-950\/40 {
+            background-color: #FFF1F2 !important;
+            border-color: #FDA4AF !important;
+        }
+        html:not(.dark) #indo-modal { background-color: rgba(15, 23, 42, 0.5) !important; }
+        html:not(.dark) #indo-modal-body { background-color: #FFFFFF !important; color: #0F172A !important; }
+
+        html:not(.dark) ::-webkit-scrollbar-track { background: #F1F5F9; }
+        html:not(.dark) ::-webkit-scrollbar-thumb { background: #CBD5E1; }
+        html:not(.dark) ::-webkit-scrollbar-thumb:hover { background: #E11D48; }
+
+        body, .glass-panel, .glass-card, div, span, h1, h2, h3, h4, h5, p, button, a {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* ==================== KAMEN RIDER KABUTO THEME ==================== */
+        .clock-up-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.25), rgba(185, 28, 28, 0.1));
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #f87171;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        .clock-up-badge::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #ef4444;
+            box-shadow: 0 0 8px #ef4444;
+            animation: clockUpPulse 1.2s infinite alternate;
+        }
+        @keyframes clockUpPulse {
+            0% { transform: scale(0.8); opacity: 0.6; }
+            100% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 12px #ef4444; }
+        }
+
+        /* Artikel expand */
+        .artikel-expand-content { overflow: hidden; transition: max-height 0.5s ease, opacity 0.4s ease; max-height: 0; opacity: 0; }
+        .artikel-expand-content.open { max-height: 5000px; opacity: 1; }
+
+        /* Prose sastra */
+        .prose-sastra p { margin-bottom: 1rem; color: #cbd5e1; font-size: 0.9rem; line-height: 1.85; font-family: 'Lora', Georgia, serif; }
+        .prose-sastra h3 { color: #fff; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; text-align: center; font-family: 'Outfit', sans-serif; }
+        .prose-sastra h4 { color: #e2e8f0; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif; }
+        .prose-sastra strong { color: #e2e8f0; }
+        .prose-sastra em { color: #a5b4fc; font-style: italic; }
+        .prose-sastra .simpulan-box {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: rgba(17, 23, 38, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-style: italic;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 1.5rem;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+
+<body class="bg-darkbg text-slate-100 font-sans min-h-screen overflow-x-hidden relative flex flex-col">
+
+    <!-- Latar Belakang Gradient Dinamis -->
+    <div class="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-red-600/10 blur-[150px] animate-pulse-slow"></div>
+        <div class="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-amber-600/10 blur-[150px] animate-pulse-slow"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+    </div>
+
+    <!-- TOP NAVBAR -->
+    <header class="w-full glass-panel fixed top-0 left-0 z-40 border-b border-white/5 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-neonred via-red-600 to-amber-400 p-[1.5px] shadow-[0_0_15px_rgba(239,68,68,0.3)]">
+                    <div class="w-full h-full bg-darkbg rounded-xl flex items-center justify-center">
+                        <span class="font-extrabold text-xs text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-400">C</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="font-bold text-base tracking-wider text-slate-100 leading-none">CAESAR</h1>
+                        <span class="clock-up-badge" title="Kamen Rider Kabuto System Active">
+                            <i class="fa-solid fa-stopwatch text-[8px]"></i> CLOCK UP
+                        </span>
+                    </div>
+                    <span class="text-[9px] text-slate-400 uppercase tracking-widest leading-none mt-1 inline-block flex items-center gap-1">
+                        <i class="fa-solid fa-crown text-amber-500 text-[8px]"></i> Ten no Michi • Bahasa Indonesia
+                    </span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="tugas 1.html"
+                    class="flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card border border-neonred/30 text-neonred text-xs font-semibold hover:bg-neonred/10 transition duration-300">
+                    <i class="fa-solid fa-arrow-left text-xs"></i> Kembali ke Dashboard
+                </a>
+                <button id="theme-toggle-btn" onclick="toggleTheme()" title="Ubah Mode Terang / Gelap"
+                    class="w-9 h-9 rounded-xl glass-card flex items-center justify-center text-amber-400 hover:scale-110 transition duration-300 border border-white/10 focus:outline-none">
+                    <i id="theme-toggle-icon" class="fa-solid fa-sun text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT WRAPPER -->
+    <main class="flex-grow max-w-7xl mx-auto w-full p-6 md:p-10 pt-28 flex flex-col gap-8">
+
+        <!-- Header Bahasa Indonesia -->
+        <div>
+            <div class="flex items-center gap-3">
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+                    <i class="fa-solid fa-book-open-reader text-neonred text-glow-red"></i> Tugas Bahasa Indonesia
+                </h2>
+                <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 font-sans flex items-center gap-1">
+                    <i class="fa-solid fa-crown text-amber-400 text-[9px]"></i> Filosofi Sastra Ten no Michi
+                </span>
+            </div>
+            <p class="text-slate-400 text-xs md:text-sm mt-1">Kumpulan naskah esai, apresiasi karya sastra, biografi, anekdot, teks lho, dan tugas penulisan formal.</p>
+        </div>
+
+        <!-- ==================== ARTIKEL BIOGRAFI ==================== -->
+        <div class="glass-card p-6 md:p-8 rounded-2xl relative overflow-hidden border-l-4 border-l-neonred shadow-xl">
+            <div class="absolute -right-16 -bottom-16 w-60 h-60 rounded-full bg-neonred/10 blur-3xl pointer-events-none"></div>
+            <div class="relative z-10">
+                <div class="flex flex-wrap items-center gap-2.5 mb-3">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-neonred/15 text-neonred border border-neonred/30 flex items-center gap-1.5 font-sans">
+                        <i class="fa-solid fa-user-pen text-xs"></i> Artikel — Teks Biografi
+                    </span>
+                    <span class="text-[11px] text-slate-400 font-mono"><i class="fa-regular fa-clock"></i> 6 Min Read</span>
+                    <span class="text-[11px] text-amber-400 font-semibold flex items-center gap-1"><i class="fa-solid fa-crown text-xs"></i> Materi Kelas XI</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-extrabold text-white tracking-tight leading-snug mb-1">
+                    Mengenal Teks Biografi: Pengertian, Struktur, Ciri Kebahasaan, dan Contoh
+                </h3>
+                <p class="text-xs text-slate-400 mb-4">Oleh: Caesar &nbsp;|&nbsp; <i class="fa-solid fa-calendar-days"></i> 30 Juli 2026</p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <button onclick="toggleSection('biografi-content', 'biografi-icon')"
+                        class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-neonred to-rose-600 hover:from-rose-500 hover:to-neonred text-white font-bold text-xs shadow-[0_0_20px_rgba(255,0,85,0.3)] transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <i class="fa-solid fa-book-open text-sm"></i> Baca Artikel <i id="biografi-icon" class="fa-solid fa-chevron-down text-xs ml-1"></i>
+                    </button>
+                </div>
+
+                <div id="biografi-content" class="artikel-expand-content">
+                    <div class="pt-4 border-t border-white/10 prose-sastra flex flex-col gap-4">
+                        <div class="p-4 rounded-xl bg-red-950/30 border border-neonred/20">
+                            <p><strong class="text-neonred">Biografi</strong> adalah teks yang menceritakan perjalanan hidup seseorang mulai dari lahir, perjuangan, prestasi, hingga wafat atau kehidupan terkininya. Biografi ditulis oleh orang lain (berbeda dengan otobiografi yang ditulis oleh dirinya sendiri). Teks ini termasuk jenis teks faktual karena berdasarkan kisah nyata.</p>
+                        </div>
+
+                        <div>
+                            <h4><i class="fa-solid fa-layer-group text-neonred"></i> Struktur Teks Biografi</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
+                                <div class="p-3.5 rounded-xl bg-red-950/20 border border-neonred/15">
+                                    <div class="text-[10px] font-bold text-neonred uppercase tracking-wide mb-1">① Orientasi</div>
+                                    <p class="text-[11px] text-slate-400 leading-relaxed">Pengenalan tokoh — nama, tempat & tanggal lahir, latar belakang keluarga, dan gambaran umum kepribadian.</p>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-red-950/20 border border-neonred/15">
+                                    <div class="text-[10px] font-bold text-neonred uppercase tracking-wide mb-1">② Peristiwa & Masalah</div>
+                                    <p class="text-[11px] text-slate-400 leading-relaxed">Rangkaian peristiwa penting, tantangan, perjuangan, dan pencapaian yang dialami tokoh sepanjang hidupnya.</p>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-red-950/20 border border-neonred/15">
+                                    <div class="text-[10px] font-bold text-neonred uppercase tracking-wide mb-1">③ Reorientasi</div>
+                                    <p class="text-[11px] text-slate-400 leading-relaxed">Kesimpulan dan penilaian penulis terhadap kontribusi serta warisan yang ditinggalkan sang tokoh. (Opsional)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4><i class="fa-solid fa-pen-fancy text-neonred"></i> Ciri Kebahasaan Teks Biografi</h4>
+                            <ul class="list-disc pl-5 flex flex-col gap-2 mt-2 text-[12px] text-slate-400">
+                                <li>Menggunakan <strong class="text-slate-200">pronomina orang ketiga</strong> (ia, beliau, dia, mereka) karena ditulis oleh pihak lain.</li>
+                                <li>Banyak menggunakan <strong class="text-slate-200">kata kerja tindakan</strong> untuk menggambarkan peristiwa (mendirikan, memimpin, meraih, berjuang).</li>
+                                <li>Menggunakan <strong class="text-slate-200">konjungsi temporal</strong> untuk urutan waktu (kemudian, lalu, setelah itu, pada tahun).</li>
+                                <li>Menyajikan <strong class="text-slate-200">fakta kronologis</strong> secara berurutan berdasarkan tahun kejadian.</li>
+                                <li>Menggunakan <strong class="text-slate-200">kata sifat pujian</strong> untuk menggambarkan keistimewaan tokoh (jenius, gigih, berdedikasi tinggi).</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4><i class="fa-solid fa-file-lines text-neonred"></i> Contoh Teks Biografi — Ir. Soekarno</h4>
+                            <div class="mt-3 p-5 rounded-xl bg-darkcard/60 border border-white/10 prose-sastra">
+                                <h3 style="text-align:left; font-size: 1rem;" class="text-white mb-3">Ir. Soekarno: Proklamator dan Bapak Bangsa Indonesia</h3>
+                                <p><strong class="text-slate-200">Orientasi:</strong> Ir. Soekarno lahir pada tanggal 6 Juni 1901 di Surabaya, Jawa Timur. Putra dari pasangan Raden Soekemi Sosrodihardjo dan Ida Ayu Nyoman Rai ini sejak kecil telah menunjukkan kecerdasan dan semangat yang luar biasa. Ia dikenal sebagai seorang orator berbakat yang mampu membakar semangat rakyat dengan kata-katanya.</p>
+                                <p><strong class="text-slate-200">Peristiwa &amp; Perjuangan:</strong> Soekarno menempuh pendidikan tinggi di Technische Hoogeschool te Bandoeng (kini ITB) dan berhasil meraih gelar insinyur (Ir.) pada tahun 1926. Semangat nasionalismenya mengantarkannya pada pendirian Partai Nasional Indonesia (PNI) pada tahun 1927. Perjuangannya yang gigih dalam menentang penjajahan Belanda berkali-kali menyebabkan dirinya ditangkap dan diasingkan, namun hal itu tak pernah memadamkan semangatnya. Puncak perjuangannya terwujud saat ia bersama Mohammad Hatta memproklamasikan kemerdekaan Indonesia pada tanggal 17 Agustus 1945.</p>
+                                <p><strong class="text-slate-200">Reorientasi:</strong> Soekarno menjabat sebagai Presiden pertama Republik Indonesia selama lebih dari dua dekade. Ia diakui dunia sebagai salah satu pemimpin paling berpengaruh dalam gerakan anti-kolonialisme abad ke-20. Meski hidupnya penuh kontroversi, warisan perjuangan dan ideologi Pancasila-nya tetap menjadi fondasi negara Indonesia hingga saat ini.</p>
+                                <div class="simpulan-box"><strong>Nilai yang Dapat Diteladani:</strong> Semangat tidak pernah menyerah, kecintaan pada tanah air, dan keberanian memperjuangkan kebenaran meski menghadapi risiko besar.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ARTIKEL ANEKDOT ==================== -->
+        <div class="glass-card p-6 md:p-8 rounded-2xl relative overflow-hidden border-l-4 border-l-amber-500 shadow-xl">
+            <div class="absolute -right-16 -bottom-16 w-60 h-60 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
+            <div class="relative z-10">
+                <div class="flex flex-wrap items-center gap-2.5 mb-3">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-amber-500/15 text-amber-400 border border-amber-500/30 flex items-center gap-1.5 font-sans">
+                        <i class="fa-solid fa-masks-theater text-xs"></i> Artikel — Teks Anekdot
+                    </span>
+                    <span class="text-[11px] text-slate-400 font-mono"><i class="fa-regular fa-clock"></i> 5 Min Read</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-extrabold text-white tracking-tight leading-snug mb-1">
+                    Teks Anekdot: Pengertian, Struktur, Kaidah Kebahasaan, dan Contoh
+                </h3>
+                <p class="text-xs text-slate-400 mb-4">Oleh: Caesar &nbsp;|&nbsp; <i class="fa-solid fa-calendar-days"></i> 30 Juli 2026</p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <button onclick="toggleSection('anekdot-content', 'anekdot-icon')"
+                        class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-yellow-400 hover:to-amber-400 text-slate-900 font-bold text-xs shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <i class="fa-solid fa-book-open text-sm"></i> Baca Artikel <i id="anekdot-icon" class="fa-solid fa-chevron-down text-xs ml-1"></i>
+                    </button>
+                </div>
+
+                <div id="anekdot-content" class="artikel-expand-content">
+                    <div class="pt-4 border-t border-white/10 prose-sastra flex flex-col gap-4">
+                        <div class="p-4 rounded-xl bg-amber-950/30 border border-amber-500/20">
+                            <p><strong class="text-amber-400">Anekdot</strong> adalah teks cerita singkat yang bersifat lucu dan menghibur, namun mengandung maksud untuk menyindir atau mengkritik tokoh, peristiwa, atau keadaan tertentu — terutama yang berkaitan dengan kepentingan publik seperti politik, hukum, dan layanan sosial. Anekdot menggunakan humor sebagai senjata kritik sosial yang tajam namun elegan.</p>
+                        </div>
+
+                        <div>
+                            <h4><i class="fa-solid fa-layer-group text-amber-400"></i> Struktur Teks Anekdot</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 mt-2">
+                                <div class="p-3 rounded-xl bg-amber-950/20 border border-amber-500/15 text-center">
+                                    <div class="text-[9px] font-bold text-amber-400 uppercase tracking-wide mb-1">① Abstraksi</div>
+                                    <p class="text-[10px] text-slate-400 leading-relaxed">Gambaran awal atau pengantar cerita yang menarik perhatian.</p>
+                                </div>
+                                <div class="p-3 rounded-xl bg-amber-950/20 border border-amber-500/15 text-center">
+                                    <div class="text-[9px] font-bold text-amber-400 uppercase tracking-wide mb-1">② Orientasi</div>
+                                    <p class="text-[10px] text-slate-400 leading-relaxed">Pengenalan tokoh, latar, dan situasi awal cerita.</p>
+                                </div>
+                                <div class="p-3 rounded-xl bg-amber-950/20 border border-amber-500/15 text-center">
+                                    <div class="text-[9px] font-bold text-amber-400 uppercase tracking-wide mb-1">③ Krisis</div>
+                                    <p class="text-[10px] text-slate-400 leading-relaxed">Puncak masalah atau situasi yang mengandung sindiran.</p>
+                                </div>
+                                <div class="p-3 rounded-xl bg-amber-950/20 border border-amber-500/15 text-center">
+                                    <div class="text-[9px] font-bold text-amber-400 uppercase tracking-wide mb-1">④ Reaksi</div>
+                                    <p class="text-[10px] text-slate-400 leading-relaxed">Respons tokoh yang biasanya mengandung kelucuan (punch line).</p>
+                                </div>
+                                <div class="p-3 rounded-xl bg-amber-950/20 border border-amber-500/15 text-center">
+                                    <div class="text-[9px] font-bold text-amber-400 uppercase tracking-wide mb-1">⑤ Koda</div>
+                                    <p class="text-[10px] text-slate-400 leading-relaxed">Penutup cerita, bisa berupa komentar atau simpulan. (Opsional)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4><i class="fa-solid fa-pen-fancy text-amber-400"></i> Kaidah Kebahasaan Teks Anekdot</h4>
+                            <ul class="list-disc pl-5 flex flex-col gap-2 mt-2 text-[12px] text-slate-400">
+                                <li>Menggunakan <strong class="text-slate-200">kalimat langsung</strong> untuk menampilkan dialog tokoh secara autentik.</li>
+                                <li>Banyak menggunakan <strong class="text-slate-200">konjungsi temporal</strong> (saat, ketika, kemudian, lalu) untuk urutan cerita.</li>
+                                <li>Menggunakan <strong class="text-slate-200">kata kerja aksi</strong> yang menggambarkan peristiwa (menjawab, berkata, tertawa).</li>
+                                <li>Mengandung <strong class="text-slate-200">sindiran implisit</strong> yang tersembunyi di balik humor.</li>
+                                <li>Menggunakan <strong class="text-slate-200">kalimat retoris</strong> untuk membuat pembaca berpikir kritis.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4><i class="fa-solid fa-masks-theater text-amber-400"></i> Contoh Teks Anekdot — "Tilang Istimewa"</h4>
+                            <div class="mt-3 p-5 rounded-xl bg-darkcard/60 border border-amber-500/20">
+                                <div class="text-[10px] font-bold text-amber-400 uppercase tracking-widest mb-3 text-center">✦ Tilang Istimewa ✦</div>
+                                <div class="prose-sastra">
+                                    <p><strong class="text-amber-300">Abstraksi:</strong> Pada suatu pagi yang cerah di Jakarta, sebuah mobil mewah melaju kencang melewati lampu merah yang sedang menyala.</p>
+                                    <p><strong class="text-amber-300">Orientasi:</strong> Seorang polisi yang bertugas di persimpangan itu segera menghentikan laju kendaraan tersebut. Setelah meminta pengemudi menepi, pak polisi mendekati jendela mobil yang diturunkan perlahan.</p>
+                                    <p><strong class="text-amber-300">Krisis:</strong> "Selamat pagi, Pak. Surat-suratnya boleh saya lihat?" tanya pak polisi sopan. Sang pengemudi yang mengenakan jas mewah tersenyum sambil menyerahkan selembar uang ratusan ribu dari dalam dompet kulit tebalnya.<br><em>"Ini buat kopi dulu, Pak."</em></p>
+                                    <p><strong class="text-amber-300">Reaksi:</strong> Pak polisi menerima uang itu, lalu dengan wajah serius berkata: <em>"Terima kasih, Pak. Tapi maaf, saya sudah bawa kopi dari rumah. Ini saya kembalikan uangnya, dan saya ganti dengan selembar surat tilang. Selamat menikmati hari Anda."</em></p>
+                                    <p><strong class="text-amber-300">Koda:</strong> Pengemudi itu terdiam, wajahnya memerah. Di seberang jalan, seorang pedagang kaki lima yang menyaksikan kejadian itu berkata kepada temannya: <em>"Wah, ketemu polisi yang belum sarapan rupanya."</em></p>
+                                </div>
+                                <div class="simpulan-box mt-4"><strong>Makna Sindiran:</strong> Anekdot ini mengkritik kebiasaan menyuap petugas hukum yang kerap terjadi di masyarakat, sekaligus memberi apresiasi pada integritas penegak hukum yang jujur.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ARTIKEL TEKS LHO ==================== -->
+        <div class="glass-card p-6 md:p-8 rounded-2xl relative overflow-hidden border-l-4 border-l-neonblue shadow-xl">
+            <div class="absolute -right-16 -bottom-16 w-60 h-60 rounded-full bg-neonblue/10 blur-3xl pointer-events-none"></div>
+            <div class="relative z-10">
+                <div class="flex flex-wrap items-center gap-2.5 mb-3">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-neonblue/15 text-neonblue border border-neonblue/30 flex items-center gap-1.5 font-sans">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i> Artikel — Teks LHO (Laporan Hasil Observasi)
+                    </span>
+                    <span class="text-[11px] text-slate-400 font-mono"><i class="fa-regular fa-clock"></i> 7 Min Read</span>
+                    <span class="text-[11px] text-emerald-400 font-semibold flex items-center gap-1"><i class="fa-solid fa-check-circle text-xs"></i> Faktual &amp; Objektif</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-extrabold text-white tracking-tight leading-snug mb-1">
+                    Teks Laporan Hasil Observasi (LHO): Pengertian, Struktur, Kaidah, dan Contoh
+                </h3>
+                <p class="text-xs text-slate-400 mb-4">Oleh: Caesar &nbsp;|&nbsp; <i class="fa-solid fa-calendar-days"></i> 30 Juli 2026</p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <button onclick="toggleSection('lho-content', 'lho-icon')"
+                        class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-neonblue to-blue-600 hover:from-blue-400 hover:to-neonblue text-slate-950 font-bold text-xs shadow-[0_0_20px_rgba(0,240,255,0.3)] transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <i class="fa-solid fa-book-open text-sm"></i> Baca Artikel <i id="lho-icon" class="fa-solid fa-chevron-down text-xs ml-1"></i>
+                    </button>
+                </div>
+
+                <div id="lho-content" class="artikel-expand-content">
+                    <div class="pt-4 border-t border-white/10 prose-sastra flex flex-col gap-4">
+                        <div class="p-4 rounded-xl bg-blue-950/30 border border-neonblue/20">
+                            <p><strong class="text-neonblue">Teks Laporan Hasil Observasi (LHO)</strong> adalah teks yang berisi penjabaran umum atau deskripsi ilmiah tentang suatu objek atau fenomena berdasarkan hasil pengamatan (observasi) langsung. Tujuannya adalah memberikan informasi faktual, objektif, dan sistematis kepada pembaca. LHO berbeda dari teks deskripsi karena bersifat klasifikasi umum, bukan deskripsi spesifik satu objek saja.</p>
+                        </div>
+
+                        <div>
+                            <h4><i class="fa-solid fa-layer-group text-neonblue"></i> Struktur Teks LHO</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
+                                <div class="p-3.5 rounded-xl bg-blue-950/20 border border-neonblue/15">
+                                    <div class="text-[10px] font-bold text-neonblue uppercase tracking-wide mb-1">① Pernyataan Umum</div>
+                                    <p class="text-[11px] text-slate-400 leading-relaxed">Pengantar atau definisi umum tentang objek yang akan dilaporkan. Berisi klasifikasi dan gambaran keseluruhan.</p>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-blue-950/20 border border-neonblue/15">
+                                    <div class="text-[10px] font-bold text-neonblue uppercase tracking-wide mb-1">② Deskripsi Bagian</div>
+                                    <p class="text-[11px] text-slate-400 leading-relaxed">Penjelasan detail tentang aspek-aspek khusus dari objek: ciri fisik, habitat, jenis, fungsi, dll.</p>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-blue-950/20 border border-neonblue/15">
+                                    <div class="text-[10px] font-bold text-neonblue uppercase tracking-wide mb-1">③ Deskripsi Manfaat</div>
+                                    <p class="text-[11px] text-slate-400 leading-relaxed">Penjabaran fungsi, manfaat, atau peran objek yang diobservasi dalam kehidupan atau ekosistem.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4><i class="fa-solid fa-pen-fancy text-neonblue"></i> Kaidah Kebahasaan Teks LHO</h4>
+                            <ul class="list-disc pl-5 flex flex-col gap-2 mt-2 text-[12px] text-slate-400">
+                                <li>Menggunakan <strong class="text-slate-200">kalimat definisi</strong> (adalah, merupakan, ialah) untuk menjelaskan objek secara umum.</li>
+                                <li>Menggunakan <strong class="text-slate-200">kata ilmiah / teknis</strong> sesuai bidang yang diobservasi (istilah sains, biologi, ekologi).</li>
+                                <li>Bersifat <strong class="text-slate-200">objektif dan tidak subjektif</strong> — tidak menggunakan perasaan atau opini pribadi penulis.</li>
+                                <li>Menggunakan <strong class="text-slate-200">kalimat pasif</strong> (digunakan, dimanfaatkan, ditemukan) untuk menunjukkan kesan ilmiah dan netral.</li>
+                                <li>Menggunakan <strong class="text-slate-200">konjungsi rincian</strong> (selain itu, di samping itu, adapun) untuk memperluas informasi.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4><i class="fa-solid fa-file-lines text-neonblue"></i> Contoh Teks LHO — "Mangrove"</h4>
+                            <div class="mt-3 p-5 rounded-xl bg-darkcard/60 border border-neonblue/20">
+                                <div class="prose-sastra">
+                                    <h3 class="text-white mb-3">Hutan Mangrove: Penjaga Garis Pantai Nusantara</h3>
+                                    <p><strong class="text-neonblue">Pernyataan Umum:</strong> Hutan mangrove adalah ekosistem hutan yang tumbuh di daerah pasang surut air laut, terutama di sepanjang pantai dan muara sungai di daerah tropis dan subtropis. Mangrove merupakan vegetasi pesisir yang memiliki kemampuan adaptasi unik terhadap lingkungan berkadar garam tinggi dan kondisi tanah yang berlumpur.</p>
+                                    <p><strong class="text-neonblue">Deskripsi Bagian:</strong> Pohon mangrove memiliki sistem perakaran yang sangat khas. Akar-akarnya yang menonjol ke atas permukaan tanah, dikenal sebagai <em>akar napas (pneumatofor)</em>, berfungsi untuk menyerap oksigen langsung dari udara karena kondisi tanah lumpur yang miskin oksigen. Daun mangrove umumnya tebal, berlapis lilin, dan memiliki kelenjar khusus yang mampu menyaring dan mengeluarkan kelebihan garam. Beberapa jenis mangrove yang umum ditemukan di Indonesia antara lain <em>Rhizophora mucronata</em>, <em>Avicennia marina</em>, dan <em>Sonneratia caseolaris</em>.</p>
+                                    <p><strong class="text-neonblue">Deskripsi Manfaat:</strong> Hutan mangrove memberikan manfaat ekologis yang sangat besar. Akar-akarnya yang rapat berfungsi sebagai penahan abrasi dan peredam energi gelombang laut dan tsunami. Di samping itu, kawasan mangrove menjadi tempat berkembang biak (nursery ground) berbagai jenis ikan, udang, dan kepiting yang bernilai ekonomi tinggi. Mangrove juga berperan sebagai penyerap karbon (blue carbon) yang efisien, menjadikannya salah satu solusi alami penting dalam memitigasi perubahan iklim global.</p>
+                                    <div class="simpulan-box"><strong>Kesimpulan Observasi:</strong> Hutan mangrove adalah ekosistem penting yang menghubungkan daratan dan lautan, menyediakan perlindungan pantai, keanekaragaman hayati, dan berperan vital dalam menjaga keseimbangan iklim bumi.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tugas Grid Bahasa Indonesia -->
+        <div>
+            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-folder-open text-neonred"></i> Daftar Tugas Bahasa Indonesia
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Tugas 1 -->
+                <div class="glass-card glass-card-red p-6 rounded-2xl flex flex-col justify-between border-l-2 border-l-neonred/40 h-80">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-neonred/10 text-neonred border border-neonred/20 font-sans">Esai Sastra</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 1</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Esai Kritik Sastra - Novel 'Laskar Pelangi'</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-4">
+                            Analisis kritik mendalam mengenai penggambaran kesenjangan fasilitas pendidikan di Belitung pada novel Laskar Pelangi karya Andrea Hirata. Esai ini menyoroti bagaimana gaya bahasa novel membangun empati pembaca serta memberikan kritik sosial terhadap birokrasi pendidikan daerah tertinggal.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 12 Agustus 2026</span>
+                        <button onclick="openIndoModal(1)" class="px-3.5 py-1.5 rounded-lg bg-neonred/10 hover:bg-neonred/20 border border-neonred/20 text-neonred font-semibold text-xs flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-book-open"></i> Baca Esai
+                        </button>
+                    </div>
+                </div>
+                <!-- Tugas 2 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border-l-2 border-l-neonblue/40 h-80">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-neonblue/10 text-neonblue border border-neonblue/20 font-sans">Musikalisasi Puisi</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 2</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Apresiasi Puisi 'Aku' karya Chairil Anwar</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-4">
+                            Tugas apresiasi dan analisis makna konotatif di balik puisi legendaris "Aku" karya Chairil Anwar. Dilengkapi dengan ringkasan mengenai latar belakang sejarah sastra Angkatan '45 dan representasi sifat pemberontakan jiwa individual sang penyair.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 22 Agustus 2026</span>
+                        <button onclick="openIndoModal(2)" class="px-3.5 py-1.5 rounded-lg bg-neonblue/10 hover:bg-neonblue/20 border border-neonblue/20 text-neonblue font-semibold text-xs flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-book-open"></i> Baca Analisis
+                        </button>
+                    </div>
+                </div>
+                <!-- Tugas 3 -->
+                <div class="glass-card glass-card-red p-6 rounded-2xl flex flex-col justify-between border-l-2 border-l-neonred/40 h-80">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-neonred/10 text-neonred border border-neonred/20 font-sans">Proposal Kegiatan</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 3</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Penyusunan Proposal Formal Kegiatan Pentas Seni</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-4">
+                            Penyusunan kerangka proposal kegiatan pentas seni (Pensi) sekolah yang memenuhi standar kebahasaan formal. Mempelajari struktur pendahuluan, rencana anggaran belanja (RAB), jadwal acara, hingga surat penawaran sponsor.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 03 September 2026</span>
+                        <button onclick="openIndoModal(3)" class="px-3.5 py-1.5 rounded-lg bg-neonred/10 hover:bg-neonred/20 border border-neonred/20 text-neonred font-semibold text-xs flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-book-open"></i> Baca Proposal
+                        </button>
+                    </div>
+                </div>
+                <!-- Tugas 4 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border-l-2 border-l-neonblue/40 h-80">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-neonblue/10 text-neonblue border border-neonblue/20 font-sans">Pidato</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 4</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Pidato Persuasif: Bijak Berliterasi Digital</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-4">
+                            Naskah teks pidato persuasif yang dibawakan dalam forum kelas bertemakan pentingnya menyaring hoaks di internet dan media sosial menggunakan logika literasi digital yang kokoh dan santun.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 11 September 2026</span>
+                        <button onclick="openIndoModal(4)" class="px-3.5 py-1.5 rounded-lg bg-neonblue/10 hover:bg-neonblue/20 border border-neonblue/20 text-neonblue font-semibold text-xs flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-book-open"></i> Baca Pidato
+                        </button>
+                    </div>
+                </div>
+                <!-- Tugas 5 -->
+                <div class="glass-card glass-card-red p-6 rounded-2xl flex flex-col justify-between border-l-2 border-l-neonred/40 h-80">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 font-sans">Resensi Buku</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 5</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Resensi Buku Non-Fiksi: 'Teknologi &amp; Peradaban'</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-4">
+                            Ulasan kritis buku sains populer mengenai sejarah transformasi teknologi komunikasi manusia dan pergeseran nilai sosial-budaya di era disrupsi digital.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 16 September 2026</span>
+                        <button onclick="openIndoModal(5)" class="px-3.5 py-1.5 rounded-lg bg-neonred/10 hover:bg-neonred/20 border border-neonred/20 text-neonred font-semibold text-xs flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-book-open"></i> Baca Resensi
+                        </button>
+                    </div>
+                </div>
+                <!-- Tugas 6 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border-l-2 border-l-neonblue/40 h-80">
+                    <div>
+                        <div class="flex justify-between items-start gap-2 mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20 font-sans">Teks Editorial</span>
+                            <span class="text-xs text-slate-400 font-medium">Tugas 6</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Analisis Teks Editorial: AI &amp; Dunia Kerja</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-4">
+                            Analisis fakta, opini, serta struktur kebahasaan artikel editorial media massa ternama yang membahas dampak otomatisasi AI terhadap peluang kerja generasi muda.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-slate-500 font-medium">Tgl: 24 September 2026</span>
+                        <button onclick="openIndoModal(6)" class="px-3.5 py-1.5 rounded-lg bg-neonblue/10 hover:bg-neonblue/20 border border-neonblue/20 text-neonblue font-semibold text-xs flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-book-open"></i> Baca Analisis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-auto pt-10 pb-4 text-center border-t border-white/5 text-[10px] text-slate-500">
+            <p>© 2026 Caesar. | SMA Cinta Kasih Tzu Chi • <span class="text-red-400 font-semibold"><i class="fa-solid fa-crown text-amber-400"></i> Ten no michi wo iki, subete wo tsasadoru otoko (Kamen Rider Kabuto ZECT System)</span></p>
+        </footer>
+    </main>
+
+    <!-- MODAL POPUP BACA BAHASA INDONESIA -->
+    <div id="indo-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-darkbg/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="glass-panel w-full max-w-3xl rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex flex-col max-h-[90vh] transform scale-95 transition-transform duration-300">
+            <div class="px-6 py-4 border-b border-white/5 flex justify-between items-center bg-darkcard">
+                <span class="px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-neonred/10 text-neonred border border-neonred/20 font-sans" id="indo-modal-tag">Tag</span>
+                <button onclick="closeIndoModal()" class="text-slate-400 hover:text-neonred transition"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto flex-grow prose prose-invert max-w-none text-slate-300 leading-relaxed font-serif text-sm md:text-base bg-[#0E1321]"
+                id="indo-modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // Theme
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        }
+
+        function setTheme(theme) {
+            const htmlEl = document.documentElement;
+            const icon = document.getElementById('theme-toggle-icon');
+            if (theme === 'light') {
+                htmlEl.classList.remove('dark');
+                htmlEl.classList.add('light');
+                localStorage.setItem('theme', 'light');
+                if (icon) icon.className = 'fa-solid fa-moon text-indigo-500 text-sm';
+            } else {
+                htmlEl.classList.add('dark');
+                htmlEl.classList.remove('light');
+                localStorage.setItem('theme', 'dark');
+                if (icon) icon.className = 'fa-solid fa-sun text-amber-400 text-sm';
+            }
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        }
+
+        initTheme();
+
+        // Toggle Section (expand/collapse artikel)
+        function toggleSection(contentId, iconId) {
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.className = 'fa-solid fa-chevron-down text-xs ml-1';
+            } else {
+                content.classList.add('open');
+                icon.className = 'fa-solid fa-chevron-up text-xs ml-1';
+            }
+        }
+
+        // Modal Data
+        const indoTasks = {
+            1: {
+                tag: 'Esai Sastra',
+                title: "Kritik Sastra - Novel 'Laskar Pelangi'",
+                author: 'Oleh: Caesar',
+                content: `
+                    <h3 class="text-xl font-bold text-white mb-4 text-center font-sans tracking-wide">Kritik Sosial Terhadap Ketidakmerataan Akses Pendidikan di Daerah Terpencil: Studi Kasus Novel Laskar Pelangi</h3>
+                    <p class="mb-4">Novel <em>Laskar Pelangi</em> karya Andrea Hirata bukan sekadar catatan masa kecil penyair yang penuh tawa dan petualangan di Pulau Belitung. Melalui teknik narasi yang liris dan deskripsi yang detail, Andrea Hirata melancarkan kritik tajam kepada birokrasi negara yang melupakan wilayah penghasil timah terbesar di dunia ini.</p>
+                    <p class="mb-4">Dalam analisis struktur sosial, sekolah SD Muhammadiyah Gantong digambarkan sebagai lambang kemiskinan yang kontras dengan kekayaan melimpah dari PN Timah. Sekolah yang hampir roboh, disangga oleh sebatang pohon, serta memiliki atap bocor, mencerminkan kurangnya perhatian dinas pendidikan daerah setempat terhadap sarana pembelajaran dasar.</p>
+                    <p class="mb-5">Kritik sastra ini berargumen bahwa novel ini menggunakan kiasan "Laskar Pelangi" sebagai representasi kekuatan batin anak-anak pinggiran yang mencoba memecahkan sekat kemiskinan melalui edukasi. Nilai perjuangan Bu Muslimah dan Pak Harfan menjadi pengingat bagi pembaca kontemporer bahwa dedikasi pendidik sering kali menjadi satu-satunya penyangga sistem pendidikan yang runtuh di daerah tertinggal.</p>
+                    <div class="p-4 rounded-xl bg-darkcard/50 border border-white/5 italic text-xs font-sans text-slate-400 mt-6 leading-relaxed">
+                        <strong>Simpulan:</strong> Esai kritik ini menyimpulkan bahwa melalui gaya realisme sosialis yang manis, Andrea Hirata berhasil mengubah penderitaan sosiologis anak Belitung menjadi refleksi nasional yang memaksa publik merenungkan arti pemerataan pendidikan sejati.
+                    </div>`
+            },
+            2: {
+                tag: 'Musikalisasi Puisi',
+                title: "Analisis Makna Puisi 'Aku' karya Chairil Anwar",
+                author: 'Oleh: Caesar',
+                content: `
+                    <h3 class="text-xl font-bold text-white mb-4 text-center font-sans tracking-wide">Representasi Eksistensialisme dan Jiwa Pemberontak dalam Puisi "Aku" karya Chairil Anwar</h3>
+                    <p class="mb-4">Puisi "Aku" karya Chairil Anwar yang ditulis pada tahun 1943 adalah manifestasi puncak dari gaya penulisan sajak Angkatan '45 yang mendobrak kaidah puisi lama (pujangga baru) yang cenderung mendayu-dayu dan terikat aturan persajakan kaku.</p>
+                    <p class="mb-4">Baris ikonik <em>"Aku ini binatang jalang, dari kumpulannya yang terbuang"</em> memuat metafora mendalam tentang individualitas yang ekstrem. Penggunaan kata "binatang jalang" mencerminkan penolakan Chairil terhadap kompromi sosial pada masa penjajahan Jepang, memilih berdiri bebas meskipun harus menanggung risiko dikucilkan.</p>
+                    <p class="mb-4">Dari aspek diksi dan rima, puisi ini menggunakan kata-kata pendek yang kuat dan tegas (seperti "peluru", "menembus", "meradang", "menerjang"). Struktur ini menghasilkan irama pembacaan yang cepat dan berenergi tinggi, cocok untuk menggugah semangat kebebasan diri.</p>
+                    <div class="p-4 rounded-xl bg-darkcard/50 border border-white/5 italic text-xs font-sans text-slate-400 mt-6 leading-relaxed">
+                        <strong>Simpulan:</strong> Puisi "Aku" mengekspresikan eksistensialisme manusia yang menuntut kebebasan absolut. Keinginan penyair untuk "hidup seribu tahun lagi" mengindikasikan bahwa karya seni dan pemikiran merdeka tidak akan pernah mati ditelan waktu.
+                    </div>`
+            },
+            3: {
+                tag: 'Proposal Kegiatan',
+                title: 'Penyusunan Proposal Pentas Seni Sekolah',
+                author: 'Oleh: Caesar',
+                content: `
+                    <h3 class="text-xl font-bold text-white mb-4 text-center font-sans tracking-wide">Kerangka Struktur Kebahasaan Proposal Formal Pentas Seni Sekolah (PENSI)</h3>
+                    <p class="mb-4">Penyusunan proposal formal menuntut penggunaan ragam bahasa baku, logis, serta penyajian data yang objektif dan transparan. Proposal ini dibuat untuk melatih kemampuan administrasi dan negosiasi secara tertulis kepada calon sponsor luar.</p>
+                    <h4 class="text-white font-bold text-sm mb-2 font-sans">1. Sistematika Penyusunan:</h4>
+                    <p class="mb-3">Proposal terdiri atas Pendahuluan (Latar Belakang & Tujuan), Isi Proposal (Tema Kegiatan, Bentuk Kegiatan, Waktu & Tempat), Susunan Kepanitiaan, Estimasi Anggaran (Rancangan Pengeluaran dan Rencana Sumber Pemasukan), serta Penutup.</p>
+                    <h4 class="text-white font-bold text-sm mb-2 font-sans">2. Analisis Diksi Formal:</h4>
+                    <p class="mb-4">Menghindari ungkapan berlebihan atau subjektif. Sebagai contoh, kalimat <em>"Kami memohon dengan sangat bantuan uang bapak/ibu"</em> diubah menjadi kalimat yang lebih profesional seperti <em>"Kami membuka kesempatan bagi institusi Bapak/Ibu untuk berpartisipasi sebagai sponsor utama kegiatan..."</em>.</p>
+                    <div class="p-4 rounded-xl bg-darkcard/50 border border-white/5 italic text-xs font-sans text-slate-400 mt-6 leading-relaxed">
+                        <strong>Pelajaran Utama:</strong> Memahami cara menyusun dokumen legal-formal membantu mempersiapkan siswa untuk penulisan profesional di jenjang perkuliahan dan dunia kerja.
+                    </div>`
+            },
+            4: {
+                tag: 'Pidato',
+                title: 'Pidato Persuasif: Bijak Berliterasi Digital',
+                author: 'Oleh: Caesar',
+                content: `
+                    <h3 class="text-xl font-bold text-white mb-4 text-center font-sans tracking-wide">Naskah Pidato Persuasif: Menumbuhkan Nalar Kritis di Tengah Banjir Informasi Digital</h3>
+                    <p class="mb-4"><strong>Selamat pagi rekan-rekan dan guru sekalian,</strong></p>
+                    <p class="mb-4">Hari ini, kita tidak lagi kekurangan informasi; justru kita sedang tenggelam dalam lautan data. Setiap pagi, jari kita menelusuri layar gawai, disambut oleh ratusan artikel berita, video pendek, dan cuitan di media sosial. Pertanyaannya: seberapa banyak dari informasi tersebut yang merupakan kebenaran ilmiah, dan seberapa banyak yang merupakan dusta yang dikemas menarik?</p>
+                    <p class="mb-4">Literasi digital bukan hanya kemampuan menggunakan gawai, mengunduh aplikasi, atau membuat konten. Literasi digital sejati adalah benteng pertahanan berpikir kita. Ia adalah kemampuan menyaring kebenaran, memeriksa fakta (cross-check), dan menahan diri untuk tidak menyebarkan informasi sebelum kita yakin akan validitasnya.</p>
+                    <p class="mb-4">Marilah kita jadikan diri kita sebagai pemutus rantai berita bohong (hoaks). Mari kita biasakan membaca teks secara utuh, bukan hanya menangkap judul provokatif yang sengaja dirancang untuk memancing emosi kita.</p>
+                    <p class="mb-4"><strong>Sekian pidato dari saya. Mari bijak bermedia, cerdas berpikir, dan santun bertutur. Terima kasih.</strong></p>`
+            },
+            5: {
+                tag: 'Resensi Buku',
+                title: "Resensi Buku Non-Fiksi: 'Teknologi & Peradaban Manusia'",
+                author: 'Oleh: Caesar',
+                content: `
+                    <h3 class="text-xl font-bold text-white mb-4 text-center font-sans tracking-wide">Menelaah Paradoks Disrupsi Teknologi terhadap Interaksi Sosial Manusia: Resensi Buku "Teknologi & Peradaban"</h3>
+                    <p class="mb-4">Buku non-fiksi <em>"Teknologi & Peradaban Manusia"</em> menghadirkan rekam jejak historis bagaimana alat yang diciptakan manusia—mulai dari mesin cetak Gutenberg hingga algoritma jaringan saraf buatan—merevolusi cara spesies manusia berkomunikasi dan membangun tatanan sosial.</p>
+                    <p class="mb-4">Penulis membagi buku ini menjadi tiga bagian utama: Era Mekanisasi, Era Digitalisasi, dan Era Otomatisasi AI. Keunggulan buku ini terletak pada analisis sosiologisnya yang tajam, memperlihatkan bagaimana media sosial dapat mendekatkan yang jauh namun secara bersamaan meregangkan kehangatan komunikasi tatap muka.</p>
+                    <div class="p-4 rounded-xl bg-darkcard/50 border border-white/5 italic text-xs font-sans text-slate-400 mt-6 leading-relaxed">
+                        <strong>Rekomendasi:</strong> Buku ini sangat direkomendasikan bagi pelajar dan mahasiswa yang ingin memahami aspek kemanusiaan di balik kemajuan teknologi informasi modern.
+                    </div>`
+            },
+            6: {
+                tag: 'Teks Editorial',
+                title: "Analisis Teks Editorial: 'Kesiapan Generasi Muda Mengoperasikan AI'",
+                author: 'Oleh: Caesar',
+                content: `
+                    <h3 class="text-xl font-bold text-white mb-4 text-center font-sans tracking-wide">Analisis Opini Redaksi dan Struktur Kebahasaan Teks Editorial Media Harian Nasional</h3>
+                    <p class="mb-4">Teks editorial atau tajuk rencana merupakan pandangan resmi suatu media terhadap isu hangat yang sedang menjadi sorotan publik. Dalam analisis tugas ini, objek kajian adalah artikel editorial bertajuk <em>"Pendidikan Karakter & AI: Menyiapkan Generasi Emas 2045"</em>.</p>
+                    <h4 class="text-white font-bold text-sm mb-2 font-sans">1. Pemisahan Fakta dan Opini:</h4>
+                    <p class="mb-3"><strong>Fakta:</strong> Data peningkatan penggunaan generator kode berbasis kecerdasan buatan sebesar 45% di kalangan siswa SMK dan SMA jurusan Teknik Komputer.</p>
+                    <p class="mb-4"><strong>Opini Redaksi:</strong> Kurikulum sekolah perlu segera memasukkan mata pelajaran etika AI agar siswa tidak menjadi konsumen pasif teknologi.</p>
+                    <h4 class="text-white font-bold text-sm mb-2 font-sans">2. Ciri Kebahasaan:</h4>
+                    <p class="mb-4">Penggunaan kata populer, konjungsi kausalitas (seperti <em>oleh karena itu</em>, <em>sebab</em>, <em>sehingga</em>), serta kalimat retoris untuk mengajak pembaca merenungkan implikasi jangka panjang disrupsi digital.</p>`
+            }
+        };
+
+        function openIndoModal(taskId) {
+            const data = indoTasks[taskId];
+            if (!data) return;
+            document.getElementById('indo-modal-tag').textContent = data.tag;
+            const body = document.getElementById('indo-modal-body');
+            body.innerHTML = `
+                <div class="mb-6 font-sans">
+                    <h2 class="text-2xl font-bold text-white tracking-tight leading-tight">${data.title}</h2>
+                    <p class="text-xs text-slate-400 mt-1">${data.author}</p>
+                </div>
+                <div class="h-[1px] w-full bg-white/10 my-4"></div>
+                <div class="prose prose-invert max-w-none text-slate-300 font-serif leading-relaxed text-sm md:text-base">
+                    ${data.content}
+                </div>
+            `;
+            const modal = document.getElementById('indo-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('.glass-panel').classList.remove('scale-95');
+                modal.querySelector('.glass-panel').classList.add('scale-100');
+            }, 50);
+        }
+
+        function closeIndoModal() {
+            const modal = document.getElementById('indo-modal');
+            modal.classList.add('opacity-0');
+            modal.querySelector('.glass-panel').classList.remove('scale-100');
+            modal.querySelector('.glass-panel').classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        document.getElementById('indo-modal').addEventListener('click', function (e) {
+            if (e.target === this) closeIndoModal();
+        });
+    </script>
+</body>
+</html>

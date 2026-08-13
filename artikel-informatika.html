@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revolusi Artificial Intelligence & Masa Depan Informatika | Caesar XI.3</title>
+
+    <!-- Meta SEO -->
+    <meta name="description"
+        content="Artikel Wawasan Informatika oleh Caesar (Kelas XI.3). Membahas Revolusi Generative AI, Computational Thinking, Etika Teknologi, dan Strategi Pemrograman Masa Depan.">
+    <meta name="author" content="Caesar - XI.3">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Font - Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#080C14',
+                        darkcard: '#111726',
+                        neonblue: '#00F0FF',
+                        neonred: '#FF0055',
+                        accgray: '#1E293B',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Kustomisasi CSS Glassmorphism -->
+    <style type="text/css">
+        .glass-panel {
+            background: linear-gradient(135deg, rgba(8, 12, 20, 0.85) 0%, rgba(17, 23, 38, 0.7) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(5, 7, 12, 0.8) 0%, rgba(20, 27, 45, 0.5) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .text-glow-blue {
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+        }
+
+        .text-glow-red {
+            text-shadow: 0 0 12px rgba(255, 0, 85, 0.6);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #080C14;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F0FF;
+        }
+
+        /* Light mode overrides */
+        html:not(.dark) body {
+            background-color: #F8FAFC;
+            color: #0F172A;
+        }
+
+        html:not(.dark) .glass-panel {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(241, 245, 249, 0.88) 100%);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        html:not(.dark) .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+        }
+
+        html:not(.dark) .text-white,
+        html:not(.dark) .text-slate-100,
+        html:not(.dark) .text-slate-200 {
+            color: #0F172A !important;
+        }
+
+        html:not(.dark) .text-slate-300 {
+            color: #1E293B !important;
+        }
+
+        html:not(.dark) .text-slate-400 {
+            color: #475569 !important;
+        }
+
+        html:not(.dark) .text-neonblue {
+            color: #0284C7 !important;
+        }
+
+        html:not(.dark) .text-neonred {
+            color: #E11D48 !important;
+        }
+
+        html:not(.dark) .bg-darkbg {
+            background-color: #F8FAFC !important;
+        }
+
+        html:not(.dark) .bg-darkcard {
+            background-color: #FFFFFF !important;
+        }
+
+        /* Clock Up Badge */
+        .clock-up-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(2, 132, 199, 0.1));
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            color: #00F0FF;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+
+<body class="bg-darkbg text-slate-100 font-sans min-h-screen relative flex flex-col">
+
+    <!-- Progress Indicator Scroll Bar -->
+    <div class="fixed top-0 left-0 w-full h-1 bg-slate-800 z-50">
+        <div id="read-progress" class="h-full bg-gradient-to-r from-neonblue via-blue-500 to-neonred w-0 transition-all duration-150"></div>
+    </div>
+
+    <!-- Dynamic Background Glow -->
+    <div class="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-[150px] animate-pulse-slow"></div>
+        <div class="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-red-600/10 blur-[150px] animate-pulse-slow"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+    </div>
+
+    <!-- NAVBAR HEADER -->
+    <header class="w-full glass-panel fixed top-0 left-0 z-40 border-b border-white/5 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Brand & Navigation Back -->
+            <div class="flex items-center gap-4">
+                <a href="tugas 1.html#informatika" title="Kembali ke Portofolio & Tugas Utama"
+                    class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-slate-300 hover:text-neonblue hover:border-neonblue transition duration-300">
+                    <i class="fa-solid fa-arrow-left text-sm"></i>
+                </a>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="font-bold text-base tracking-wider text-slate-100 leading-none">INFORMATIKA</h1>
+                        <span class="clock-up-badge">
+                            <i class="fa-solid fa-laptop-code text-[8px]"></i> ARTIKEL KHUSUS
+                        </span>
+                    </div>
+                    <span class="text-[9px] text-slate-400 uppercase tracking-widest leading-none mt-1 block">
+                        Caesar • Kelas XI.3 • SMA Cinta Kasih Tzu Chi
+                    </span>
+                </div>
+            </div>
+
+            <!-- Quick Links & Theme Toggle -->
+            <div class="flex items-center gap-3">
+                <a href="tugas 1.html#informatika"
+                    class="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-neonblue/10 hover:bg-neonblue/20 text-neonblue border border-neonblue/30 transition">
+                    <i class="fa-solid fa-folder-open"></i> Semua Tugas Informatika
+                </a>
+                <button id="theme-toggle-btn" onclick="toggleTheme()" title="Ubah Mode Terang / Gelap"
+                    class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-amber-400 hover:scale-110 transition duration-300 border border-white/10 focus:outline-none">
+                    <i id="theme-toggle-icon" class="fa-solid fa-sun text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow max-w-5xl mx-auto w-full px-6 md:px-10 pt-28 pb-16 flex flex-col gap-10">
+
+        <!-- ARTICLE HERO HEADER -->
+        <article class="flex flex-col gap-6">
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-neonblue/15 text-neonblue border border-neonblue/30 flex items-center gap-1.5">
+                    <i class="fa-solid fa-robot"></i> Artificial Intelligence & Informatika
+                </span>
+                <span class="text-xs text-slate-400 flex items-center gap-1">
+                    <i class="fa-regular fa-clock"></i> 8 Menit Membaca
+                </span>
+                <span class="text-xs text-slate-400 flex items-center gap-1">
+                    <i class="fa-regular fa-calendar-days"></i> 29 Juli 2026
+                </span>
+                <span class="text-xs text-amber-400 font-semibold flex items-center gap-1">
+                    <i class="fa-solid fa-crown text-xs"></i> Karya Utama Kelas XI.3
+                </span>
+            </div>
+
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                Revolusi Artificial Intelligence & Masa Depan Informatika: <span class="bg-gradient-to-r from-neonblue via-blue-400 to-neonred bg-clip-text text-transparent">Menavigasi Era Generative AI dan Computational Thinking</span>
+            </h1>
+
+            <!-- Author Card -->
+            <div class="glass-card p-4 rounded-2xl flex items-center justify-between border-l-4 border-l-neonblue">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-neonblue to-neonred p-[2px]">
+                        <div class="w-full h-full bg-darkbg rounded-full flex items-center justify-center font-bold text-white text-sm">
+                            C
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-100 leading-none">Caesar</h4>
+                        <p class="text-xs text-slate-400 mt-1">Siswa Kelas XI.3 • SMA Cinta Kasih Tzu Chi</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-slate-400 text-xs">
+                    <span class="hidden sm:inline">Bagikan:</span>
+                    <button onclick="copyArticleLink()" title="Salin Tautan Artikel"
+                        class="w-8 h-8 rounded-lg glass-card flex items-center justify-center hover:text-neonblue transition">
+                        <i class="fa-solid fa-link text-xs"></i>
+                    </button>
+                    <a href="https://www.instagram.com/caetyz?igsh=MXV2ODJ6bjRhMTA4Nw==" target="_blank" title="Instagram Author"
+                        class="w-8 h-8 rounded-lg glass-card flex items-center justify-center hover:text-neonred transition">
+                        <i class="fa-brands fa-instagram text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Feature Card -->
+            <div class="glass-card p-6 md:p-8 rounded-3xl relative overflow-hidden border border-neonblue/30 shadow-[0_0_30px_rgba(0,240,255,0.1)]">
+                <div class="absolute -right-20 -top-20 w-60 h-60 rounded-full bg-neonblue/10 blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-blue-600/10 border border-neonblue/40 flex items-center justify-center text-neonblue text-4xl shrink-0">
+                        <i class="fa-solid fa-brain animate-pulse"></i>
+                    </div>
+                    <div class="text-xs md:text-sm text-slate-300 leading-relaxed">
+                        <strong class="text-white text-sm md:text-base block mb-1">Ringkasan Eksekutif:</strong>
+                        Perkembangan pesat Kecerdasan Buatan (AI) bukan sekadar tren teknologi sementara, melainkan pergeseran mendasar dalam cara manusia berpikir, memecahkan masalah komputasi, dan membangun aplikasi lunak. Artikel ini membahas evolusi AI, pentingnya fondasi *computational thinking*, integrasi etika digital, serta penerapannya bagi pelajar di era modern.
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABLE OF CONTENTS (DAFTAR ISI) -->
+            <div class="glass-card p-6 rounded-2xl border border-white/5 my-2">
+                <h3 class="font-bold text-sm text-white mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-list-ul text-neonblue"></i> Daftar Isi Artikel
+                </h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs text-slate-300 font-medium">
+                    <li><a href="#bab1" class="hover:text-neonblue transition flex items-center gap-2"><i class="fa-solid fa-angle-right text-[10px] text-neonblue"></i> 1. Fajar Baru Informatika & Generative AI</a></li>
+                    <li><a href="#bab2" class="hover:text-neonblue transition flex items-center gap-2"><i class="fa-solid fa-angle-right text-[10px] text-neonblue"></i> 2. Pilar Utama Computational Thinking</a></li>
+                    <li><a href="#bab3" class="hover:text-neonblue transition flex items-center gap-2"><i class="fa-solid fa-angle-right text-[10px] text-neonblue"></i> 3. Cyber Security & Etika Kecerdasan Buatan</a></li>
+                    <li><a href="#bab4" class="hover:text-neonblue transition flex items-center gap-2"><i class="fa-solid fa-angle-right text-[10px] text-neonblue"></i> 4. Implementasi Proyek Pembelajaran di Kelas XI.3</a></li>
+                    <li><a href="#penutup" class="hover:text-neonblue transition flex items-center gap-2"><i class="fa-solid fa-angle-right text-[10px] text-neonblue"></i> 5. Kesimpulan & Filosofi Ten no Michi</a></li>
+                </ul>
+            </div>
+
+            <!-- ARTICLE CONTENT BODY -->
+            <div class="flex flex-col gap-8 text-sm md:text-base text-slate-300 leading-relaxed">
+
+                <!-- BAB 1 -->
+                <section id="bab1" class="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-neonblue flex flex-col gap-4">
+                    <div class="flex items-center gap-2 text-xs font-mono text-neonblue uppercase">
+                        <i class="fa-solid fa-microchip"></i> Bagian Pertama
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white">1. Fajar Baru Informatika & Generative AI</h2>
+                    <p>
+                        Dunia ilmu komputer dan informatika mengalami transformasi paling radikal sejak munculnya jaringan internet publik pada era 1990-an. Hadirnya model bahasa berskala besar (*Large Language Models*) dan kecerdasan buatan generatif (*Generative AI*) telah mengubah cara baris kode program dibuat dan dioptimalkan.
+                    </p>
+                    <p>
+                        Dahulu, pemrograman komputer sangat bergantung pada aturan logis yang ditulis secara manual (*rule-based programming*). Namun saat ini, sistem berbasis *Neural Network* dan arsitektur *Transformer* mampu mempelajari pola data kompleks secara otomatis, memungkinkan komputer memahami bahasa alami manusia dan mengeksekusi instruksi tingkat tinggi.
+                    </p>
+                    <div class="p-4 rounded-xl bg-blue-950/30 border border-blue-500/20 text-xs md:text-sm text-slate-300 italic">
+                        <i class="fa-solid fa-quote-left text-neonblue mr-2"></i>
+                        "AI tidak akan menggantikan programmer atau siswa informatika; tetapi manusia yang memanfaatkan AI akan menggantikan mereka yang enggan beradaptasi."
+                    </div>
+                </section>
+
+                <!-- BAB 2 -->
+                <section id="bab2" class="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-amber-400 flex flex-col gap-4">
+                    <div class="flex items-center gap-2 text-xs font-mono text-amber-400 uppercase">
+                        <i class="fa-solid fa-diagram-project"></i> Bagian Kedua
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white">2. Pilar Utama Computational Thinking</h2>
+                    <p>
+                        Meskipun alat kecerdasan buatan semakin canggih, kemampuan dasar manusia dalam berpikir komputasional (*Computational Thinking*) tetap menjadi fondasi yang paling menentukan. Ada empat pilar utama yang wajib dikuasai oleh siswa Informatika:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2">
+                        <div class="p-4 rounded-xl bg-slate-950/40 border border-white/5 flex flex-col gap-2">
+                            <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
+                                <i class="fa-solid fa-puzzle-piece"></i> Decomposisi (Decomposition)
+                            </span>
+                            <p class="text-xs text-slate-400">Memecah masalah besar dan kompleks menjadi bagian-bagian kecil yang lebih mudah dianalisis dan diselesaikan secara sistematis.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-950/40 border border-white/5 flex flex-col gap-2">
+                            <span class="text-xs font-bold text-neonblue flex items-center gap-1.5">
+                                <i class="fa-solid fa-magnifying-glass-chart"></i> Pengenalan Pola (Pattern Recognition)
+                            </span>
+                            <p class="text-xs text-slate-400">Menemukan kesamaan atau kecenderungan dalam sekumpulan data untuk memprediksi hasil dan merancang solusi yang efisien.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-950/40 border border-white/5 flex flex-col gap-2">
+                            <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+                                <i class="fa-solid fa-filter"></i> Abstraksi (Abstraction)
+                            </span>
+                            <p class="text-xs text-slate-400">Menghilangkan detail yang tidak relevan sehingga perhatian terfokus pada konsep dasar yang penting.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-950/40 border border-white/5 flex flex-col gap-2">
+                            <span class="text-xs font-bold text-neonred flex items-center gap-1.5">
+                                <i class="fa-solid fa-code"></i> Perancangan Algoritma (Algorithm Design)
+                            </span>
+                            <p class="text-xs text-slate-400">Menyusun langkah-langkah logis yang teratur untuk menyelesaikan masalah dari awal hingga selesai.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BAB 3 -->
+                <section id="bab3" class="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-neonred flex flex-col gap-4">
+                    <div class="flex items-center gap-2 text-xs font-mono text-neonred uppercase">
+                        <i class="fa-solid fa-shield-halved"></i> Bagian Ketiga
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white">3. Cyber Security & Etika Kecerdasan Buatan</h2>
+                    <p>
+                        Seiring berkembangnya otomatisasi data, tantangan di bidang keamanan siber (*Cyber Security*) dan etika kecerdasan buatan menjadi semakin krusial. Perlindungan privasi data pribadi, pencegahan serangan *phishing*, serta pemahaman atas bias dalam model kecerdasan buatan merupakan tanggung jawab moral para inovator muda.
+                    </p>
+                    <p>
+                        Penggunaan AI harus diimbangi dengan integritas akademik dan transparansi. Alat komputasi hendaknya digunakan sebagai penguat potensi manusia (*human augmentation*), bukan sekadar alat otomatisasi tanpa pengawasan rasional.
+                    </p>
+                </section>
+
+                <!-- BAB 4 CODE DEMO -->
+                <section id="bab4" class="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-purple-400 flex flex-col gap-4">
+                    <div class="flex items-center gap-2 text-xs font-mono text-purple-400 uppercase">
+                        <i class="fa-solid fa-code-compare"></i> Bagian Keempat
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white">4. Implementasi Proyek Pembelajaran di Kelas XI.3</h2>
+                    <p>
+                        Di SMA Cinta Kasih Tzu Chi, pembelajaran Informatika di kelas XI.3 mencakup sintesis teori dan praktik langsung. Mulai dari perancangan antarmuka web modern berbasis HTML/CSS, logika algoritma Python, hingga manajemen basis data SQL.
+                    </p>
+
+                    <!-- Code Snippet Box -->
+                    <div class="rounded-xl bg-[#080C14] border border-white/10 overflow-hidden font-mono text-xs my-2">
+                        <div class="px-4 py-2 bg-slate-900 border-b border-white/5 flex justify-between items-center text-slate-400 text-[11px]">
+                            <span><i class="fa-brands fa-python text-amber-400 mr-1"></i> python_search_algorithm.py</span>
+                            <span>Demo Logika Pencarian</span>
+                        </div>
+                        <pre class="p-4 text-emerald-400 overflow-x-auto leading-relaxed"><code><span class="text-slate-500"># Algoritma Binary Search Efiensien untuk Kelas XI.3</span>
+<span class="text-purple-400">def</span> <span class="text-blue-400">binary_search</span>(arr, target):
+    low = <span class="text-amber-400">0</span>
+    high = len(arr) - <span class="text-amber-400">1</span>
+    
+    <span class="text-purple-400">while</span> low &lt;= high:
+        mid = (low + high) // <span class="text-amber-400">2</span>
+        <span class="text-purple-400">if</span> arr[mid] == target:
+            <span class="text-purple-400">return</span> f<span class="text-emerald-300">"Data ditemukan pada indeks {mid}"</span>
+        <span class="text-purple-400">elif</span> arr[mid] &lt; target:
+            low = mid + <span class="text-amber-400">1</span>
+        <span class="text-purple-400">else</span>:
+            high = mid - <span class="text-amber-400">1</span>
+    <span class="text-purple-400">return</span> <span class="text-emerald-300">"Data tidak ditemukan"</span>
+
+<span class="text-slate-500"># Eksekusi simulasi</span>
+data = [<span class="text-amber-400">10, 25, 34, 48, 52, 67, 89, 94</span>]
+print(binary_search(data, <span class="text-amber-400">67</span>))</code></pre>
+                    </div>
+                </section>
+
+                <!-- PENUTUP -->
+                <section id="penutup" class="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-red-500 flex flex-col gap-4">
+                    <div class="flex items-center gap-2 text-xs font-mono text-red-400 uppercase">
+                        <i class="fa-solid fa-crown"></i> Kesimpulan
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white">5. Kesimpulan & Filosofi Ten no Michi</h2>
+                    <p>
+                        Informatika di masa depan bukan lagi sekadar tentang menghafal sintaks bahasa pemrograman, melainkan tentang bagaimana kita memanfaatkan daya komputasi untuk menyelesaikan permasalahan nyata masyarakat dengan kreatif, beretika, dan berdampak luas.
+                    </p>
+                    <p class="italic">
+                        Sebagaimana filosofi <strong class="text-red-400 font-semibold">Ten no Michi</strong> ("Berjalan di jalan langit dan menguasai segalanya"), seorang pelajar informatika sejati harus memiliki semangat belajar tanpa batas, terus berinovasi, dan menjunjung tinggi nilai-nilai kemanusiaan dalam setiap baris karya digitalnya.
+                    </p>
+                </section>
+
+            </div>
+        </article>
+
+        <!-- BACK TO PORTFOLIO BANNER -->
+        <div class="glass-card p-6 md:p-8 rounded-3xl border border-neonblue/30 flex flex-col md:flex-row justify-between items-center gap-6 mt-4">
+            <div>
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-folder-tree text-neonblue"></i> Ingin Melihat Tugas & Portofolio Lainnya?
+                </h3>
+                <p class="text-xs text-slate-400 mt-1">Jelajahi halaman tugas Informatika, Bahasa Indonesia, dan statistik belajar Caesar.</p>
+            </div>
+            <a href="tugas 1.html#informatika"
+                class="px-6 py-3 rounded-xl bg-gradient-to-r from-neonblue to-blue-600 hover:from-blue-400 hover:to-neonblue text-slate-950 font-bold text-xs shadow-[0_0_20px_rgba(0,240,255,0.3)] transition-all duration-300 transform hover:scale-105 shrink-0 flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Portofolio Utama
+            </a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="pt-8 text-center border-t border-white/5 text-[10px] text-slate-500 flex flex-col gap-2">
+            <p>© 2026 Caesar. | SMA Cinta Kasih Tzu Chi • Kelas XI.3</p>
+            <p class="text-red-400 font-semibold">
+                <i class="fa-solid fa-crown text-amber-400"></i> Ten no michi wo iki, subete wo tsasadoru otoko (Kamen Rider Kabuto ZECT System)
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 px-4 py-2.5 rounded-xl bg-slate-900 border border-neonblue/40 text-neonblue text-xs font-semibold shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none flex items-center gap-2">
+        <i class="fa-solid fa-circle-check"></i> <span id="toast-msg">Tautan berhasil disalin!</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Theme Toggle System
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        }
+
+        function setTheme(theme) {
+            const htmlEl = document.documentElement;
+            const icon = document.getElementById('theme-toggle-icon');
+            if (theme === 'light') {
+                htmlEl.classList.remove('dark');
+                htmlEl.classList.add('light');
+                localStorage.setItem('theme', 'light');
+                if (icon) icon.className = 'fa-solid fa-moon text-indigo-500 text-sm';
+            } else {
+                htmlEl.classList.add('dark');
+                htmlEl.classList.remove('light');
+                localStorage.setItem('theme', 'dark');
+                if (icon) icon.className = 'fa-solid fa-sun text-amber-400 text-sm';
+            }
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        }
+
+        initTheme();
+
+        // Reading Progress Indicator
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('read-progress').style.width = scrolled + '%';
+        });
+
+        // Copy Link Toast
+        function copyArticleLink() {
+            navigator.clipboard.writeText(window.location.href);
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0');
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+            }, 2500);
+        }
+    </script>
+</body>
+
+</html>
